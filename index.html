@@ -3,54 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختار طريقك - منصة التعليم الرقمي</title>
+    <title>اختار طريقك - منصة تطوير المهارات البرمجية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --accent-color: #4895ef;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --success-color: #4cc9f0;
-            --warning-color: #f72585;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
         }
 
         body {
-            background-color: #f5f7fa;
-            color: var(--dark-color);
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
 
-        /* Header Styles */
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Header */
         header {
-            background-color: white;
-            box-shadow: var(--box-shadow);
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 1rem 0;
         }
 
         .header-container {
@@ -62,40 +140,37 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 0.75rem;
         }
 
         .logo img {
-            height: 50px;
-            margin-left: 10px;
+            height: 2.5rem;
+            width: auto;
         }
 
-        .logo h1 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+        .logo-text {
             font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
         }
 
-        nav ul {
+        .nav-desktop {
             display: flex;
-            list-style: none;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        nav ul li {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark-color);
+        .nav-link {
             font-weight: 500;
-            padding: 8px 12px;
+            color: var(--dark);
+            padding: 0.5rem 1rem;
             border-radius: var(--border-radius);
             transition: var(--transition);
         }
 
-        nav ul li a:hover, nav ul li a.active {
-            color: white;
-            background-color: var(--primary-color);
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
         }
 
         .mobile-menu-btn {
@@ -103,189 +178,253 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: var(--primary);
             cursor: pointer;
-        }
-
-        /* Main Content Styles */
-        main {
-            margin-top: 80px;
-            min-height: calc(100vh - 160px);
-        }
-
-        .page {
-            display: none;
-            padding: 40px 0;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 10rem 0 6rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            border-radius: var(--border-radius);
-            margin-bottom: 40px;
         }
 
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
         }
 
-        .btn {
-            display: inline-block;
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
             background-color: white;
-            color: var(--primary-color);
-            padding: 12px 30px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
             border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
+            border: 1px solid var(--gray-light);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
         }
 
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            color: var(--gray);
         }
 
         /* Courses Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        .courses {
+            padding: 6rem 0;
+            background-color: #f1f5f9;
         }
 
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
 
         .course-card {
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid var(--gray-light);
         }
 
         .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .course-icon {
-            height: 120px;
-            background-color: var(--primary-color);
+        .course-header {
+            height: 180px;
+            background-color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
-        }
-
-        .course-content {
-            padding: 20px;
-        }
-
-        .course-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .course-content p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .course-objectives {
-            margin-bottom: 20px;
-        }
-
-        .course-objectives h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        .course-objectives ul {
-            list-style-position: inside;
-            padding-right: 15px;
-        }
-
-        .course-objectives li {
-            margin-bottom: 8px;
-        }
-
-        /* Summary Table */
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background-color: white;
-            box-shadow: var(--box-shadow);
-            border-radius: var(--border-radius);
+            position: relative;
             overflow: hidden;
         }
 
+        .course-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+        }
+
+        .course-icon {
+            font-size: 4rem;
+            z-index: 1;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .course-description {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .course-objectives {
+            margin-bottom: 1.5rem;
+        }
+
+        .objectives-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .objectives-list {
+            list-style-type: none;
+        }
+
+        .objective-item {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .objective-item::before {
+            content: '→';
+            position: absolute;
+            right: 0;
+            color: var(--primary);
+        }
+
+        /* Summary Section */
+        .summary {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
         .summary-table th, .summary-table td {
-            padding: 15px;
+            padding: 1.25rem 1.5rem;
             text-align: right;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--gray-light);
         }
 
         .summary-table th {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
             font-weight: 500;
         }
@@ -295,34 +434,78 @@
         }
 
         .summary-table tr:hover td {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
         }
 
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background-color: #f1f5f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
             background-color: white;
-            padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--dark);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
             border-radius: var(--border-radius);
             font-size: 1rem;
             transition: var(--transition);
@@ -330,52 +513,65 @@
 
         .form-control:focus {
             outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         textarea.form-control {
-            min-height: 120px;
+            min-height: 150px;
             resize: vertical;
         }
 
-        .form-submit {
-            text-align: center;
-        }
-
-        /* About Us */
-        .about-content {
+        /* About Section */
+        .about {
+            padding: 6rem 0;
             background-color: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
         }
 
-        .about-content p {
-            margin-bottom: 15px;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .developer-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
             display: flex;
             align-items: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-top: 30px;
+            gap: 2rem;
+            margin-top: 3rem;
+            border: 1px solid var(--gray-light);
         }
 
-        .developer-img {
-            width: 100px;
-            height: 100px;
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background-color: #eee;
-            margin-left: 20px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .developer-img img {
+        .developer-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -383,25 +579,38 @@
 
         .developer-info h3 {
             font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
-        .developer-links a {
-            display: inline-block;
-            margin-top: 10px;
-            margin-left: 15px;
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: var(--transition);
+        .developer-title {
+            color: var(--gray);
+            margin-bottom: 1rem;
         }
 
-        .developer-links a:hover {
-            color: var(--secondary-color);
+        .developer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .developer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .developer-link:hover {
             text-decoration: underline;
         }
 
-        /* FAQ */
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background-color: #f1f5f9;
+        }
+
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -409,27 +618,39 @@
 
         .faq-item {
             background-color: white;
-            margin-bottom: 15px;
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
             overflow: hidden;
+            border: 1px solid var(--gray-light);
         }
 
         .faq-question {
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
+            padding: 1.5rem;
+            background-color: white;
+            color: var(--dark);
+            font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
         }
 
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-question.active {
+            background-color: #f8fafc;
         }
 
         .faq-question.active::after {
@@ -437,221 +658,229 @@
         }
 
         .faq-answer {
-            padding: 0 20px;
+            padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
         .faq-answer.show {
-            padding: 20px;
-            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+            max-height: 1000px;
         }
 
-        /* Privacy & Terms */
+        /* Legal Sections */
+        .legal {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
         .legal-content {
             background-color: white;
-            padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
 
         .legal-content h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         .legal-content h3 {
-            color: var(--secondary-color);
-            margin: 25px 0 15px;
-            font-size: 1.4rem;
+            color: var(--dark);
+            margin: 2rem 0 1rem;
         }
 
         .legal-content p, .legal-content ul {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
+            color: var(--gray);
         }
 
         .legal-content ul {
-            padding-right: 20px;
+            padding-right: 1.5rem;
         }
 
         .legal-content li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+
+        .legal-content li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--primary);
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--dark);
             color: white;
-            padding: 40px 0 20px;
-            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .footer-about {
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
         }
 
         .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            list-style-type: none;
         }
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
+        .footer-link {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link a {
+            color: #cbd5e1;
             transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: var(--accent-color);
+        .footer-link a:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         .social-links {
-            margin-bottom: 20px;
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .social-links a {
-            display: inline-block;
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
+        .social-link {
             width: 40px;
             height: 40px;
-            line-height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background-color: var(--accent-color);
+        .social-link:hover {
+            background-color: var(--primary);
             transform: translateY(-3px);
         }
 
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
         .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            color: #94a3b8;
         }
 
         /* Responsive Styles */
-        @media (max-width: 992px) {
-            .courses-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        @media (max-width: 1024px) {
+            .contact-container, .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
             }
         }
 
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .hero-title {
+                font-size: 2.5rem;
             }
-
-            .logo {
-                margin-bottom: 15px;
-                justify-content: center;
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
-
-            nav ul {
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .developer-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .developer-img {
-                margin-left: 0;
-                margin-bottom: 15px;
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
-        @media (max-width: 576px) {
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                left: 20px;
-            }
-
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 15px;
-            }
-
-            nav.active {
-                display: block;
-            }
-
+        @media (max-width: 640px) {
             .hero {
-                padding: 60px 0;
+                padding: 8rem 0 4rem;
             }
-
-            .hero h2 {
-                font-size: 1.8rem;
+            
+            .hero-title {
+                font-size: 2rem;
             }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 1rem;
+            
+            .section-header {
+                margin-bottom: 2rem;
             }
-
-            .course-icon {
-                height: 100px;
-                font-size: 2.5rem;
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
             }
-
-            .course-content h3 {
-                font-size: 1.3rem;
-            }
-
-            .summary-table th, .summary-table td {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-
-            .contact-form {
-                padding: 20px;
+            
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
 
         /* Custom Icons */
-        .icon-web::before {
-            content: "🌐";
-        }
-
-        .icon-app::before {
-            content: "📱";
-        }
-
-        .icon-software::before {
-            content: "💻";
-        }
-
-        .icon-tools::before {
-            content: "🛠️";
-        }
-
-        .icon-ai::before {
-            content: "🤖";
-        }
-
-        .icon-telegram::before {
-            content: "✉️";
-        }
+        .icon-code::before { content: "💻"; }
+        .icon-mobile::before { content: "📱"; }
+        .icon-software::before { content: "🖥️"; }
+        .icon-tools::before { content: "🛠️"; }
+        .icon-ai::before { content: "🧠"; }
+        .icon-bot::before { content: "🤖"; }
+        .icon-rocket::before { content: "🚀"; }
+        .icon-check::before { content: "✅"; }
+        .icon-support::before { content: "📞"; }
+        .icon-email::before { content: "✉️"; }
+        .icon-location::before { content: "📍"; }
     </style>
 </head>
 <body>
@@ -660,431 +889,549 @@
         <div class="container header-container">
             <div class="logo">
                 <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="اختار طريقك">
-                <h1>اختار طريقك</h1>
+                <span class="logo-text">اختار طريقك</span>
             </div>
-            <button class="mobile-menu-btn">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="#" class="nav-link active" data-page="home">الرئيسية</a></li>
-                    <li><a href="#" class="nav-link" data-page="courses">الكورسات</a></li>
-                    <li><a href="#" class="nav-link" data-page="summary">اختيارك</a></li>
-                    <li><a href="#" class="nav-link" data-page="contact">تواصل معانا</a></li>
-                    <li><a href="#" class="nav-link" data-page="about">من نحن</a></li>
-                    <li><a href="#" class="nav-link" data-page="faq">الأسئلة الشائعة</a></li>
-                </ul>
+            
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link active" data-page="home">الرئيسية</a>
+                <a href="#" class="nav-link" data-page="courses">الكورسات</a>
+                <a href="#" class="nav-link" data-page="summary">اختيارك</a>
+                <a href="#" class="nav-link" data-page="contact">تواصل معانا</a>
+                <a href="#" class="nav-link" data-page="about">من نحن</a>
+                <a href="#" class="nav-link" data-page="faq">الأسئلة الشائعة</a>
             </nav>
+            
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <nav>
+            <a href="#" class="nav-link active" data-page="home">الرئيسية</a>
+            <a href="#" class="nav-link" data-page="courses">الكورسات</a>
+            <a href="#" class="nav-link" data-page="summary">اختيارك</a>
+            <a href="#" class="nav-link" data-page="contact">تواصل معانا</a>
+            <a href="#" class="nav-link" data-page="about">من نحن</a>
+            <a href="#" class="nav-link" data-page="faq">الأسئلة الشائعة</a>
+        </nav>
+    </div>
+
     <!-- Main Content -->
     <main>
-        <!-- Home Page -->
+        <!-- Hero Section -->
         <section id="home" class="page active">
             <div class="hero">
                 <div class="container">
-                    <h2>ابدأ رحلتك معانا</h2>
-                    <p>ساعد نفسك تختار الطريق اللي يناسبك، احنا معاك خطوة بخطوة</p>
-                    <a href="#" class="btn btn-primary" data-page="courses">ابدأ الاختيار الآن</a>
+                    <div class="hero-content">
+                        <h1 class="hero-title">ابدأ رحلتك في عالم البرمجة</h1>
+                        <p class="hero-subtitle">ساعد نفسك تختار الطريق اللي يناسبك، احنا معاك خطوة بخطوة لحد ما توصل للاحتراف</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn btn-primary btn-lg" data-page="courses">اكتشف الكورسات</a>
+                            <a href="#" class="btn btn-outline btn-lg" data-page="contact">تواصل معانا</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="section-title">
-                    <h2>ليه تختار منصة "اختار طريقك"؟</h2>
-                </div>
-
-                <div class="about-content">
-                    <p>منصة "اختار طريقك" هتساعدك تكتشف المجال البرمجي المناسب ليك وتاخد أول خطوة في طريقك الاحترافي. احنا بنقدم شرح واضح وسهل لكل مجال مع أمثلة عملية من الحياة الواقعية.</p>
-                    <p>مش هتحتار تاني بين الكورسات الكتيرة، احنا هنساعدك توصل للطريق الصح من أول مرة.</p>
+            <!-- Features Section -->
+            <div class="features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">ليه تختار منصة "اختار طريقك"؟</h2>
+                        <p class="section-subtitle">احنا بنقدم حاجات مش هتلاقيها في أي منصة تانية، كلها مزايا هتساعدك توصل لأحسن نتيجة في أقصر وقت</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon icon-rocket"></div>
+                            <h3 class="feature-title">مسار واضح</h3>
+                            <p class="feature-description">مش هتحتار تاني، احنا هنساعدك تختار الطريق الصح من أول مرة بناءً على مهاراتك وأهدافك</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon icon-check"></div>
+                            <h3 class="feature-title">شرح عملي</h3>
+                            <p class="feature-description">كله تطبيق عملي ومشاريع حقيقية، مش مجرد نظريات، علشان تتعلم وتطبق في نفس الوقت</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon icon-support"></div>
+                            <h3 class="feature-title">دعم فني دائم</h3>
+                            <p class="feature-description">فريق الدعم الفني بتاعنا موجود طول اليوم علشان يساعدك في أي مشكلة تواجهك أثناء التعلم</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Courses Page -->
+        <!-- Courses Section -->
         <section id="courses" class="page">
-            <div class="container">
-                <div class="section-title">
-                    <h2>الكورسات المتاحة</h2>
-                </div>
-
-                <div class="courses-grid">
-                    <!-- Course 1 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-web"></div>
-                        <div class="course-content">
-                            <h3>Web Developer</h3>
-                            <p>هتتعلم إزاي تبني مواقع إلكترونية من الصفر لحد ما ترفعها أونلاين. هتدرس HTML, CSS, JavaScript، وهتتعلم تربط الواجهة الأمامية بالخلفية وقواعد البيانات عشان تعمل موقع احترافي كامل.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>فهم أساسيات تطوير الويب</li>
-                                    <li>بناء مواقع تفاعلية متكاملة</li>
-                                    <li>ربط الواجهات مع قواعد البيانات</li>
-                                    <li>نشر المواقع على السيرفرات</li>
-                                    <li>تحسين أداء المواقع</li>
-                                </ul>
-                            </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="Web Developer">اختر الكورس ده</a>
-                        </div>
+            <div class="courses">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">الكورسات المتاحة</h2>
+                        <p class="section-subtitle">اختار الكورس اللي يناسبك وابدأ رحلتك في عالم البرمجة من اليوم</p>
                     </div>
-
-                    <!-- Course 2 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-app"></div>
-                        <div class="course-content">
-                            <h3>Application Developer</h3>
-                            <p>هتتعلم تبني تطبيقات موبايل Android من البداية لحد النشر على Google Play، مع تصميم واجهات جذابة وسهلة، وهتضيف قواعد بيانات جوه التطبيق.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>تعلم أساسيات برمجة تطبيقات Android</li>
-                                    <li>تصميم واجهات مستخدم جذابة</li>
-                                    <li>التعامل مع قواعد البيانات المحلية</li>
-                                    <li>ربط التطبيق بالإنترنت</li>
-                                    <li>نشر التطبيق على متجر Google Play</li>
-                                </ul>
+                    
+                    <div class="courses-grid">
+                        <!-- Course 1 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-code"></div>
                             </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="Application Developer">اختر الكورس ده</a>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير مواقع الويب</h3>
+                                <p class="course-description">هتتعلم إزاي تبني مواقع إلكترونية من الصفر لحد ما ترفعها أونلاين. هتدرس HTML, CSS, JavaScript، وهتتعلم تربط الواجهة الأمامية بالخلفية وقواعد البيانات عشان تعمل موقع احترافي كامل.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">فهم أساسيات تطوير الويب</li>
+                                        <li class="objective-item">بناء مواقع تفاعلية متكاملة</li>
+                                        <li class="objective-item">ربط الواجهات مع قواعد البيانات</li>
+                                        <li class="objective-item">نشر المواقع على السيرفرات</li>
+                                        <li class="objective-item">تحسين أداء المواقع</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="Web Developer">اختر الكورس ده</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Course 3 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-software"></div>
-                        <div class="course-content">
-                            <h3>Software Developer</h3>
-                            <p>هتتعلم برمجة برامج كمبيوتر قوية، مع كتابة كود احترافي ونظيف، وهتتعلم إزاي تطور برامج سطح مكتب سريعة وفعالة.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>فهم أساسيات برمجة البرامج</li>
-                                    <li>كتابة كود نظيف وقابل للصيانة</li>
-                                    <li>بناء واجهات مستخدم للبرامج</li>
-                                    <li>تحسين أداء البرامج</li>
-                                    <li>توزيع البرامج وتثبيتها</li>
-                                </ul>
+                        
+                        <!-- Course 2 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-mobile"></div>
                             </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="Software Developer">اختر الكورس ده</a>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير تطبيقات الموبايل</h3>
+                                <p class="course-description">هتتعلم تبني تطبيقات موبايل Android من البداية لحد النشر على Google Play، مع تصميم واجهات جذابة وسهلة، وهتضيف قواعد بيانات جوه التطبيق.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">تعلم أساسيات برمجة تطبيقات Android</li>
+                                        <li class="objective-item">تصميم واجهات مستخدم جذابة</li>
+                                        <li class="objective-item">التعامل مع قواعد البيانات المحلية</li>
+                                        <li class="objective-item">ربط التطبيق بالإنترنت</li>
+                                        <li class="objective-item">نشر التطبيق على متجر Google Play</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="Application Developer">اختر الكورس ده</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Course 4 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-tools"></div>
-                        <div class="course-content">
-                            <h3>Tools Developer</h3>
-                            <p>هتتعلم تبني أدوات برمجية خفيفة وإضافات لمتصفح Chrome تساعد الناس تنجز شغلها بسرعة وسهولة.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>بناء أدوات مساعدة صغيرة</li>
-                                    <li>تطوير إضافات لمتصفح Chrome</li>
-                                    <li>أتمتة المهام المتكررة</li>
-                                    <li>تحسين إنتاجية المستخدمين</li>
-                                    <li>توزيع الأدوات والإضافات</li>
-                                </ul>
+                        
+                        <!-- Course 3 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-software"></div>
                             </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="Tools Developer">اختر الكورس ده</a>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير برامج الكمبيوتر</h3>
+                                <p class="course-description">هتتعلم برمجة برامج كمبيوتر قوية، مع كتابة كود احترافي ونظيف، وهتتعلم إزاي تطور برامج سطح مكتب سريعة وفعالة.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">فهم أساسيات برمجة البرامج</li>
+                                        <li class="objective-item">كتابة كود نظيف وقابل للصيانة</li>
+                                        <li class="objective-item">بناء واجهات مستخدم للبرامج</li>
+                                        <li class="objective-item">تحسين أداء البرامج</li>
+                                        <li class="objective-item">توزيع البرامج وتثبيتها</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="Software Developer">اختر الكورس ده</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Course 5 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-ai"></div>
-                        <div class="course-content">
-                            <h3>AI Tools Developer</h3>
-                            <p>هتتعلم تدمج الذكاء الاصطناعي في التطبيقات باستخدام ChatGPT API و Google AI API عشان تطور حلول ذكية تحل مشاكل حقيقية.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>فهم أساسيات الذكاء الاصطناعي</li>
-                                    <li>دمج واجهات برمجة الذكاء الاصطناعي</li>
-                                    <li>بناء تطبيقات ذكية تفاعلية</li>
-                                    <li>تحسين تجربة المستخدم باستخدام AI</li>
-                                    <li>حل مشاكل حقيقية بالذكاء الاصطناعي</li>
-                                </ul>
+                        
+                        <!-- Course 4 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-tools"></div>
                             </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="AI Tools Developer">اختر الكورس ده</a>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير الأدوات البرمجية</h3>
+                                <p class="course-description">هتتعلم تبني أدوات برمجية خفيفة وإضافات لمتصفح Chrome تساعد الناس تنجز شغلها بسرعة وسهولة.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">بناء أدوات مساعدة صغيرة</li>
+                                        <li class="objective-item">تطوير إضافات لمتصفح Chrome</li>
+                                        <li class="objective-item">أتمتة المهام المتكررة</li>
+                                        <li class="objective-item">تحسين إنتاجية المستخدمين</li>
+                                        <li class="objective-item">توزيع الأدوات والإضافات</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="Tools Developer">اختر الكورس ده</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Course 6 -->
-                    <div class="course-card">
-                        <div class="course-icon icon-telegram"></div>
-                        <div class="course-content">
-                            <h3>Telegram Bot Developer</h3>
-                            <p>هتتعلم تعمل بوتات تليجرام تفاعلية بتقدم خدمات حقيقية، وهتتعلم التعامل الاحترافي مع الرسائل والأوامر باستخدام Telegram Bot API.</p>
-                            
-                            <div class="course-objectives">
-                                <h4>أهداف الكورس:</h4>
-                                <ul>
-                                    <li>إنشاء بوتات تليجرام متقدمة</li>
-                                    <li>التعامل مع الأوامر والرسائل</li>
-                                    <li>ربط البوت بقواعد البيانات</li>
-                                    <li>تقديم خدمات مفيدة عبر البوت</li>
-                                    <li>نشر البوت وجعله متاح للجميع</li>
-                                </ul>
+                        
+                        <!-- Course 5 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-ai"></div>
                             </div>
-                            
-                            <a href="#" class="btn btn-primary choose-course" data-course="Telegram Bot Developer">اختر الكورس ده</a>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير أدوات الذكاء الاصطناعي</h3>
+                                <p class="course-description">هتتعلم تدمج الذكاء الاصطناعي في التطبيقات باستخدام ChatGPT API و Google AI API عشان تطور حلول ذكية تحل مشاكل حقيقية.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">فهم أساسيات الذكاء الاصطناعي</li>
+                                        <li class="objective-item">دمج واجهات برمجة الذكاء الاصطناعي</li>
+                                        <li class="objective-item">بناء تطبيقات ذكية تفاعلية</li>
+                                        <li class="objective-item">تحسين تجربة المستخدم باستخدام AI</li>
+                                        <li class="objective-item">حل مشاكل حقيقية بالذكاء الاصطناعي</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="AI Tools Developer">اختر الكورس ده</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 6 -->
+                        <div class="course-card">
+                            <div class="course-header">
+                                <div class="course-icon icon-bot"></div>
+                            </div>
+                            <div class="course-body">
+                                <h3 class="course-title">تطوير بوتات تليجرام</h3>
+                                <p class="course-description">هتتعلم تعمل بوتات تليجرام تفاعلية بتقدم خدمات حقيقية، وهتتعلم التعامل الاحترافي مع الرسائل والأوامر باستخدام Telegram Bot API.</p>
+                                
+                                <div class="course-objectives">
+                                    <h4 class="objectives-title">أهداف الكورس:</h4>
+                                    <ul class="objectives-list">
+                                        <li class="objective-item">إنشاء بوتات تليجرام متقدمة</li>
+                                        <li class="objective-item">التعامل مع الأوامر والرسائل</li>
+                                        <li class="objective-item">ربط البوت بقواعد البيانات</li>
+                                        <li class="objective-item">تقديم خدمات مفيدة عبر البوت</li>
+                                        <li class="objective-item">نشر البوت وجعله متاح للجميع</li>
+                                    </ul>
+                                </div>
+                                
+                                <a href="#" class="btn btn-primary choose-course" data-course="Telegram Bot Developer">اختر الكورس ده</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Summary Table Page -->
+        <!-- Summary Section -->
         <section id="summary" class="page">
-            <div class="container">
-                <div class="section-title">
-                    <h2>اختار الكورس المناسب ليك</h2>
+            <div class="summary">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">إزاي تختار الكورس المناسب ليك؟</h2>
+                        <p class="section-subtitle">الجدول ده هيساعدك تحدد الكورس اللي يناسب أهدافك</p>
+                    </div>
+                    
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>الهدف</th>
+                                <th>الكورس المناسب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>عايز تطور مواقع ويب كاملة</td>
+                                <td>تطوير مواقع الويب</td>
+                            </tr>
+                            <tr>
+                                <td>عايز تعمل تطبيقات موبايل</td>
+                                <td>تطوير تطبيقات الموبايل</td>
+                            </tr>
+                            <tr>
+                                <td>عايز تبرمج برامج كمبيوتر قوية</td>
+                                <td>تطوير برامج الكمبيوتر</td>
+                            </tr>
+                            <tr>
+                                <td>عايز تطور أدوات مساعدة صغيرة</td>
+                                <td>تطوير الأدوات البرمجية</td>
+                            </tr>
+                            <tr>
+                                <td>عايز تستخدم الذكاء الاصطناعي في مشاريعك</td>
+                                <td>تطوير أدوات الذكاء الاصطناعي</td>
+                            </tr>
+                            <tr>
+                                <td>عايز تعمل بوتات تليجرام ذكية</td>
+                                <td>تطوير بوتات تليجرام</td>
+                            </tr>
+                            <tr>
+                                <td>لسه مش عارف تختار ومحتار</td>
+                                <td><a href="#" class="nav-link" data-page="contact">اتصل بنا واحنا نساعدك</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <table class="summary-table">
-                    <thead>
-                        <tr>
-                            <th>الهدف</th>
-                            <th>الكورس المناسب</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>عايز تطور مواقع ويب كاملة</td>
-                            <td>Web Developer</td>
-                        </tr>
-                        <tr>
-                            <td>عايز تعمل تطبيقات موبايل</td>
-                            <td>Application Developer</td>
-                        </tr>
-                        <tr>
-                            <td>عايز تبرمج برامج كمبيوتر قوية</td>
-                            <td>Software Developer</td>
-                        </tr>
-                        <tr>
-                            <td>عايز تطور أدوات مساعدة صغيرة</td>
-                            <td>Tools Developer</td>
-                        </tr>
-                        <tr>
-                            <td>عايز تستخدم الذكاء الاصطناعي في مشاريعك</td>
-                            <td>AI Tools Developer</td>
-                        </tr>
-                        <tr>
-                            <td>عايز تعمل بوتات تليجرام ذكية</td>
-                            <td>Telegram Bot Developer</td>
-                        </tr>
-                        <tr>
-                            <td>مش عارف تختار ومحتار</td>
-                            <td>اتصل بنا واحنا نساعدك</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
-        <!-- Contact Page -->
+        <!-- Contact Section -->
         <section id="contact" class="page">
-            <div class="container">
-                <div class="section-title">
-                    <h2>تواصل معانا</h2>
-                </div>
-
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">الاسم بالكامل</label>
-                            <input type="text" id="name" class="form-control" required>
+            <div class="contact">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">تواصل معانا</h2>
+                        <p class="section-subtitle">اسأل أي سؤال أو سجل في أي كورس، فريق الدعم بتاعنا هيوصل لك في أسرع وقت</p>
+                    </div>
+                    
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3 class="contact-title">معلومات التواصل</h3>
+                            
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <div class="contact-icon icon-support"></div>
+                                    <div>
+                                        <h4>الدعم الفني</h4>
+                                        <p>متاح 24/7 للإجابة على استفساراتك</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon icon-email"></div>
+                                    <div>
+                                        <h4>البريد الإلكتروني</h4>
+                                        <p>support@ikhtartareeqak.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon icon-location"></div>
+                                    <div>
+                                        <h4>المقر الرئيسي</h4>
+                                        <p>القاهرة، مصر</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="social-links">
+                                <a href="https://t.me/omaretmanBOT" class="social-link" target="_blank">📱</a>
+                                <a href="https://omarmetman.vercel.app" class="social-link" target="_blank">🌐</a>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="course">الكورس المختار</label>
-                            <select id="course" class="form-control" required>
-                                <option value="">-- اختر الكورس --</option>
-                                <option value="Web Developer">Web Developer</option>
-                                <option value="Application Developer">Application Developer</option>
-                                <option value="Software Developer">Software Developer</option>
-                                <option value="Tools Developer">Tools Developer</option>
-                                <option value="AI Tools Developer">AI Tools Developer</option>
-                                <option value="Telegram Bot Developer">Telegram Bot Developer</option>
-                            </select>
+                        
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">الاسم بالكامل</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="course" class="form-label">الكورس المختار</label>
+                                    <select id="course" class="form-control" required>
+                                        <option value="">-- اختر الكورس --</option>
+                                        <option value="Web Developer">تطوير مواقع الويب</option>
+                                        <option value="Application Developer">تطوير تطبيقات الموبايل</option>
+                                        <option value="Software Developer">تطوير برامج الكمبيوتر</option>
+                                        <option value="Tools Developer">تطوير الأدوات البرمجية</option>
+                                        <option value="AI Tools Developer">تطوير أدوات الذكاء الاصطناعي</option>
+                                        <option value="Telegram Bot Developer">تطوير بوتات تليجرام</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="goal" class="form-label">الهدف من اختيار الكورس</label>
+                                    <textarea id="goal" class="form-control" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="form-group">
-                            <label for="goal">الهدف من اختيار الكورس</label>
-                            <textarea id="goal" class="form-control" required></textarea>
-                        </div>
-
-                        <div class="form-group form-submit">
-                            <button type="submit" class="btn btn-primary">إرسال الطلب</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Page -->
+        <!-- About Section -->
         <section id="about" class="page">
-            <div class="container">
-                <div class="section-title">
-                    <h2>من نحن</h2>
-                </div>
-
-                <div class="about-content">
-                    <p>"اختار طريقك" منصة تعليمية هادفة بتساعد الشباب العربي يكتشف شغفه في مجال البرمجة ويختار الطريق الصح من بداية رحلته.</p>
-                    <p>احنا بنقدم شرح مبسط لكل مجال برمجي باللهجة المصرية السهلة، مع أمثلة عملية من الواقع، علشان نوفر عليك وقت وجهد البحث والتجربة والخطأ.</p>
-                    <p>المنصة بتقدم محتوى تعليمي متميز بجودة عالية، مع متابعة شخصية لكل طالب علشان نوصل بيه لأفضل نتيجة.</p>
-                </div>
-
-                <div class="developer-card">
-                    <div class="developer-img">
-                        <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="Omar M. Etman">
+            <div class="about">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">من نحن</h2>
+                        <p class="section-subtitle">فكرة منصة "اختار طريقك" ورسالتنا اللي بنحاول نوصلها للجميع</p>
                     </div>
-                    <div class="developer-info">
-                        <h3>Omar M. Etman</h3>
-                        <p>مطور ومؤسس منصة "اختار طريقك"</p>
-                        <div class="developer-links">
-                            <a href="https://t.me/omaretmanBOT" target="_blank">التليجرام</a>
-                            <a href="https://omarmetman.vercel.app" target="_blank">الموقع الشخصي</a>
+                    
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>"اختار طريقك" منصة تعليمية متخصصة في مجال البرمجة وتطوير البرمجيات، هدفنا نساعد الشباب العربي يكتشف شغفه في المجال البرمجي ويختار الطريق الصح من بداية رحلته.</p>
+                            <p>احنا بنقدم شرح مبسط لكل مجال برمجي باللهجة المصرية السهلة، مع أمثلة عملية من الواقع، علشان نوفر عليك وقت وجهد البحث والتجربة والخطأ.</p>
+                            <p>المنصة بتقدم محتوى تعليمي متميز بجودة عالية، مع متابعة شخصية لكل طالب علشان نوصل بيه لأفضل نتيجة في أقصر وقت ممكن.</p>
+                            <p>رسالتنا إننا نكون الجسر اللي بيوصل أي حد عايز يدخل مجال البرمجة للطريق الصح، من غير ما يضيع وقت وجهد وفلوس في حاجات مش هتفيده.</p>
+                        </div>
+                        
+                        <div class="about-image">
+                            <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="منصة اختار طريقك">
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-avatar">
+                            <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="Omar M. Etman">
+                        </div>
+                        
+                        <div class="developer-info">
+                            <h3>Omar M. Etman</h3>
+                            <p class="developer-title">مطور ومؤسس منصة "اختار طريقك"</p>
+                            <p>خبرة أكثر من 10 سنوات في مجال تطوير البرمجيات وتدريب المبرمجين، وعملت مع شركات كتير في الداخل والخارج.</p>
+                            
+                            <div class="developer-links">
+                                <a href="https://t.me/omaretmanBOT" class="developer-link" target="_blank">
+                                    <span class="icon-support"></span> التليجرام
+                                </a>
+                                <a href="https://omarmetman.vercel.app" class="developer-link" target="_blank">
+                                    <span class="icon-location"></span> الموقع الشخصي
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Page -->
+        <!-- FAQ Section -->
         <section id="faq" class="page">
-            <div class="container">
-                <div class="section-title">
-                    <h2>الأسئلة الشائعة</h2>
-                </div>
-
-                <div class="faq-container">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item">
-                        <div class="faq-question">هل الكورسات مناسبة للمبتدئين؟</div>
-                        <div class="faq-answer">
-                            <p>أكيد! كل الكورسات عندنا مبنية علشان تبدأ من الصفر، حتى لو معندكش أي خبرة في البرمجة قبل كدا. هتتعلم كل حاجة من الأساسيات لحد الاحتراف.</p>
-                        </div>
+            <div class="faq">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">الأسئلة الشائعة</h2>
+                        <p class="section-subtitle">إجابات على الأسئلة اللي ممكن تخطر على بالك عن المنصة والكورسات</p>
                     </div>
-
-                    <!-- FAQ 2 -->
-                    <div class="faq-item">
-                        <div class="faq-question">كم مدة الكورسات؟</div>
-                        <div class="faq-answer">
-                            <p>مدة كل كورس بتختلف حسب المجال، لكن في المتوسط من 3 لـ 6 شهور لو بتحضر بانتظام. في بعض الكورسات ممكن تكملها في وقت أقل لو عندك خبرة مسبقة.</p>
+                    
+                    <div class="faq-container">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item">
+                            <div class="faq-question">هل الكورسات مناسبة للمبتدئين؟</div>
+                            <div class="faq-answer">
+                                <p>أكيد! كل الكورسات عندنا مبنية علشان تبدأ من الصفر، حتى لو معندكش أي خبرة في البرمجة قبل كدا. هتتعلم كل حاجة من الأساسيات لحد الاحتراف.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="faq-item">
-                        <div class="faq-question">هل في شهادة معتمدة في نهاية الكورس؟</div>
-                        <div class="faq-answer">
-                            <p>نعم، بنقدم شهادة إتمام معتمدة من المنصة لكل طالب ينهي الكورس بنجاح بعد ما ينجح في المشروع النهائي.</p>
+                        
+                        <!-- FAQ 2 -->
+                        <div class="faq-item">
+                            <div class="faq-question">كم مدة الكورسات؟</div>
+                            <div class="faq-answer">
+                                <p>مدة كل كورس بتختلف حسب المجال، لكن في المتوسط من 3 لـ 6 شهور لو بتحضر بانتظام. في بعض الكورسات ممكن تكملها في وقت أقل لو عندك خبرة مسبقة.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- FAQ 4 -->
-                    <div class="faq-item">
-                        <div class="faq-question">هل في دعم فني أثناء الكورس؟</div>
-                        <div class="faq-answer">
-                            <p>بالطبع! عندنا فريق دعم فني متاح طول اليوم للإجابة على أي أسئلة أو حل أي مشاكل تواجهك أثناء التعلم.</p>
+                        
+                        <!-- FAQ 3 -->
+                        <div class="faq-item">
+                            <div class="faq-question">هل في شهادة معتمدة في نهاية الكورس؟</div>
+                            <div class="faq-answer">
+                                <p>نعم، بنقدم شهادة إتمام معتمدة من المنصة لكل طالب ينهي الكورس بنجاح بعد ما ينجح في المشروع النهائي.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- FAQ 5 -->
-                    <div class="faq-item">
-                        <div class="faq-question">إزاي أدفع مصاريف الكورس؟</div>
-                        <div class="faq-answer">
-                            <p>الدفع بيكون أونلاين عن طريق البطاقات الائتمانية أو فودافون كاش أو حوالة بنكية. بنقدم خيارات دفع متعددة تناسب الجميع.</p>
+                        
+                        <!-- FAQ 4 -->
+                        <div class="faq-item">
+                            <div class="faq-question">هل في دعم فني أثناء الكورس؟</div>
+                            <div class="faq-answer">
+                                <p>بالطبع! عندنا فريق دعم فني متاح طول اليوم للإجابة على أي أسئلة أو حل أي مشاكل تواجهك أثناء التعلم.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- FAQ 6 -->
-                    <div class="faq-item">
-                        <div class="faq-question">هل في خصومات للطلاب؟</div>
-                        <div class="faq-answer">
-                            <p>نعم، عندنا خصومات خاصة للطلاب تصل لـ 30% على بعض الكورسات. كلمنا على صفحة التواصل علشان نرسل لك التفاصيل.</p>
+                        
+                        <!-- FAQ 5 -->
+                        <div class="faq-item">
+                            <div class="faq-question">إزاي أدفع مصاريف الكورس؟</div>
+                            <div class="faq-answer">
+                                <p>الدفع بيكون أونلاين عن طريق البطاقات الائتمانية أو فودافون كاش أو حوالة بنكية. بنقدم خيارات دفع متعددة تناسب الجميع.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 6 -->
+                        <div class="faq-item">
+                            <div class="faq-question">هل في خصومات للطلاب؟</div>
+                            <div class="faq-answer">
+                                <p>نعم، عندنا خصومات خاصة للطلاب تصل لـ 30% على بعض الكورسات. كلمنا على صفحة التواصل علشان نرسل لك التفاصيل.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Privacy Policy Page -->
+        <!-- Privacy Policy Section -->
         <section id="privacy" class="page">
-            <div class="container">
-                <div class="legal-content">
-                    <h2>سياسة الخصوصية</h2>
-                    
-                    <p>نحن في منصة "اختار طريقك" نحرص على حماية خصوصيتك وبياناتك الشخصية. هذه السياسة توضح كيف نتعامل مع المعلومات التي نجمعها منك.</p>
-                    
-                    <h3>المعلومات التي نجمعها</h3>
-                    <p>قد نجمع المعلومات التالية عند استخدامك للمنصة:</p>
-                    <ul>
-                        <li>الاسم والعنوان البريدي وعنوان البريد الإلكتروني</li>
-                        <li>معلومات الاتصال مثل رقم الهاتف</li>
-                        <li>المعلومات الأكاديمية والمهنية</li>
-                        <li>سجل الدخول والتفاعل مع المنصة</li>
-                    </ul>
-                    
-                    <h3>كيف نستخدم معلوماتك</h3>
-                    <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
-                    <ul>
-                        <li>تقديم الخدمات التعليمية وتحسين جودتها</li>
-                        <li>التواصل معك بشأن الكورسات والخدمات</li>
-                        <li>تحليل استخدام المنصة لتحسين تجربة المستخدم</li>
-                        <li>الامتثال للقوانين واللوائح المعمول بها</li>
-                    </ul>
-                    
-                    <h3>حماية البيانات</h3>
-                    <p>نحن نستخدم إجراءات أمنية فنية وإدارية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به أو التعديل أو الإفشاء أو التدمير.</p>
-                    
-                    <h3>تغييرات على السياسة</h3>
-                    <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سننشر أي تغييرات على هذه الصفحة ونخطرك بالبريد الإلكتروني إذا كانت التغييرات جوهرية.</p>
+            <div class="legal">
+                <div class="container">
+                    <div class="legal-content">
+                        <h2>سياسة الخصوصية</h2>
+                        
+                        <p>نحن في منصة "اختار طريقك" نحرص على حماية خصوصيتك وبياناتك الشخصية. هذه السياسة توضح كيف نتعامل مع المعلومات التي نجمعها منك.</p>
+                        
+                        <h3>المعلومات التي نجمعها</h3>
+                        <p>قد نجمع المعلومات التالية عند استخدامك للمنصة:</p>
+                        <ul>
+                            <li>الاسم والعنوان البريدي وعنوان البريد الإلكتروني</li>
+                            <li>معلومات الاتصال مثل رقم الهاتف</li>
+                            <li>المعلومات الأكاديمية والمهنية</li>
+                            <li>سجل الدخول والتفاعل مع المنصة</li>
+                        </ul>
+                        
+                        <h3>كيف نستخدم معلوماتك</h3>
+                        <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+                        <ul>
+                            <li>تقديم الخدمات التعليمية وتحسين جودتها</li>
+                            <li>التواصل معك بشأن الكورسات والخدمات</li>
+                            <li>تحليل استخدام المنصة لتحسين تجربة المستخدم</li>
+                            <li>الامتثال للقوانين واللوائح المعمول بها</li>
+                        </ul>
+                        
+                        <h3>حماية البيانات</h3>
+                        <p>نحن نستخدم إجراءات أمنية فنية وإدارية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به أو التعديل أو الإفشاء أو التدمير.</p>
+                        
+                        <h3>تغييرات على السياسة</h3>
+                        <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سننشر أي تغييرات على هذه الصفحة ونخطرك بالبريد الإلكتروني إذا كانت التغييرات جوهرية.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Terms & Conditions Page -->
+        <!-- Terms & Conditions Section -->
         <section id="terms" class="page">
-            <div class="container">
-                <div class="legal-content">
-                    <h2>شروط الاستخدام</h2>
-                    
-                    <p>مرحبًا بك في منصة "اختار طريقك". يرجى قراءة شروط الاستخدام هذه بعناية قبل استخدام المنصة.</p>
-                    
-                    <h3>القبول بالشروط</h3>
-                    <p>باستخدامك للمنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على هذه الشروط، فيرجى عدم استخدام المنصة.</p>
-                    
-                    <h3>استخدام المنصة</h3>
-                    <p>يجب عليك استخدام المنصة للأغراض التعليمية فقط ووفقًا للقوانين واللوائح المعمول بها. لا يجوز لك:</p>
-                    <ul>
-                        <li>نسخ أو توزيع أو تعديل المحتوى دون إذن</li>
-                        <li>استخدام المنصة لأي غرض غير قانوني أو غير مصرح به</li>
-                        <li>التدخل في عمل المنصة أو إساءة استخدامها</li>
-                        <li>انتحال شخصية أي شخص أو كيان</li>
-                    </ul>
-                    
-                    <h3>الحسابات والمعلومات</h3>
-                    <p>أنت مسؤول عن الحفاظ على سرية معلومات حسابك وكلمة المرور. يجب عليك إبلاغنا فورًا بأي استخدام غير مصرح به لحسابك.</p>
-                    
-                    <h3>الملكية الفكرية</h3>
-                    <p>جميع المحتويات والمواد التعليمية على المنصة محمية بحقوق الملكية الفكرية. لا يجوز نسخها أو توزيعها أو تعديلها دون إذن كتابي مسبق.</p>
-                    
-                    <h3>التعديلات على الشروط</h3>
-                    <p>نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم إخطارك بأي تغييرات جوهرية عبر البريد الإلكتروني أو عبر المنصة.</p>
-                    
-                    <h3>إنهاء الخدمة</h3>
-                    <p>نحتفظ بالحق في تعليق أو إنهاء وصولك إلى المنصة في أي وقت دون إشعار إذا انتهكت هذه الشروط.</p>
+            <div class="legal">
+                <div class="container">
+                    <div class="legal-content">
+                        <h2>شروط الاستخدام</h2>
+                        
+                        <p>مرحبًا بك في منصة "اختار طريقك". يرجى قراءة شروط الاستخدام هذه بعناية قبل استخدام المنصة.</p>
+                        
+                        <h3>القبول بالشروط</h3>
+                        <p>باستخدامك للمنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على هذه الشروط، فيرجى عدم استخدام المنصة.</p>
+                        
+                        <h3>استخدام المنصة</h3>
+                        <p>يجب عليك استخدام المنصة للأغراض التعليمية فقط ووفقًا للقوانين واللوائح المعمول بها. لا يجوز لك:</p>
+                        <ul>
+                            <li>نسخ أو توزيع أو تعديل المحتوى دون إذن</li>
+                            <li>استخدام المنصة لأي غرض غير قانوني أو غير مصرح به</li>
+                            <li>التدخل في عمل المنصة أو إساءة استخدامها</li>
+                            <li>انتحال شخصية أي شخص أو كيان</li>
+                        </ul>
+                        
+                        <h3>الحسابات والمعلومات</h3>
+                        <p>أنت مسؤول عن الحفاظ على سرية معلومات حسابك وكلمة المرور. يجب عليك إبلاغنا فورًا بأي استخدام غير مصرح به لحسابك.</p>
+                        
+                        <h3>الملكية الفكرية</h3>
+                        <p>جميع المحتويات والمواد التعليمية على المنصة محمية بحقوق الملكية الفكرية. لا يجوز نسخها أو توزيعها أو تعديلها دون إذن كتابي مسبق.</p>
+                        
+                        <h3>التعديلات على الشروط</h3>
+                        <p>نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم إخطارك بأي تغييرات جوهرية عبر البريد الإلكتروني أو عبر المنصة.</p>
+                        
+                        <h3>إنهاء الخدمة</h3>
+                        <p>نحتفظ بالحق في تعليق أو إنهاء وصولك إلى المنصة في أي وقت دون إشعار إذا انتهكت هذه الشروط.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1093,24 +1440,47 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="#" data-page="home">الرئيسية</a>
-                <a href="#" data-page="courses">الكورسات</a>
-                <a href="#" data-page="summary">اختيارك</a>
-                <a href="#" data-page="contact">تواصل معانا</a>
-                <a href="#" data-page="about">من نحن</a>
-                <a href="#" data-page="faq">الأسئلة الشائعة</a>
-                <a href="#" data-page="privacy">سياسة الخصوصية</a>
-                <a href="#" data-page="terms">شروط الاستخدام</a>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="اختار طريقك">
+                        <span class="footer-logo-text">اختار طريقك</span>
+                    </div>
+                    <p>منصة تعليمية متخصصة في مجال البرمجة وتطوير البرمجيات، هدفنا نساعد الشباب العربي يكتشف شغفه في المجال البرمجي ويختار الطريق الصح.</p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" data-page="home">الرئيسية</a></li>
+                        <li class="footer-link"><a href="#" data-page="courses">الكورسات</a></li>
+                        <li class="footer-link"><a href="#" data-page="summary">اختيارك</a></li>
+                        <li class="footer-link"><a href="#" data-page="contact">تواصل معانا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">معلومات</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" data-page="about">من نحن</a></li>
+                        <li class="footer-link"><a href="#" data-page="faq">الأسئلة الشائعة</a></li>
+                        <li class="footer-link"><a href="#" data-page="privacy">سياسة الخصوصية</a></li>
+                        <li class="footer-link"><a href="#" data-page="terms">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">تواصل معانا</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="mailto:support@ikhtartareeqak.com">support@ikhtartareeqak.com</a></li>
+                        <li class="footer-link"><a href="https://t.me/omaretmanBOT" target="_blank">التليجرام</a></li>
+                        <li class="footer-link"><a href="https://omarmetman.vercel.app" target="_blank">الموقع الشخصي</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="social-links">
-                <a href="https://t.me/omaretmanBOT" target="_blank">📱</a>
-                <a href="https://omarmetman.vercel.app" target="_blank">🌐</a>
-            </div>
-
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2023 منصة "اختار طريقك" | تطوير: Omar M. Etman</p>
+            
+            <div class="footer-bottom">
+                <p class="copyright">جميع الحقوق محفوظة &copy; 2023 منصة "اختار طريقك" | تطوير: Omar M. Etman</p>
             </div>
         </div>
     </footer>
@@ -1119,10 +1489,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile Menu Toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const nav = document.querySelector('nav');
+            const mobileMenu = document.querySelector('.mobile-menu');
             
             mobileMenuBtn.addEventListener('click', function() {
-                nav.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
             });
 
             // Navigation between pages
@@ -1150,7 +1520,7 @@
                     this.classList.add('active');
                     
                     // Close mobile menu if open
-                    nav.classList.remove('active');
+                    mobileMenu.classList.remove('active');
                     
                     // Scroll to top
                     window.scrollTo(0, 0);
@@ -1215,15 +1585,14 @@
                 const message = `📩 طلب جديد:\nالاسم: ${name}\nالكورس المختار: ${course}\nالهدف: ${goal}`;
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 
-                const formData = new FormData();
-                formData.append('chat_id', chatId);
-                formData.append('text', message);
-                
                 fetch(url, {
                     method: 'POST',
-                    body: new URLSearchParams({
-                        'chat_id': chatId,
-                        'text': message
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
                     })
                 })
                 .then(response => response.json())

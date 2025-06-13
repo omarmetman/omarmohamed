@@ -12,19 +12,22 @@
             --primary-light: #3b82f6;
             --primary-dark: #1d4ed8;
             --secondary: #0ea5e9;
-            --accent: #2563eb;
+            --accent: #8b5cf6;
             --light: #ffffff;
             --dark: #111827;
             --gray: #6b7280;
             --light-gray: #f3f4f6;
+            --dark-gray: #1f2937;
             --border: #e5e7eb;
             --success: #10b981;
             --error: #ef4444;
+            --warning: #f59e0b;
             --transition: all 0.3s ease;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
             --rounded: 12px;
             --rounded-sm: 8px;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         }
         
         * {
@@ -145,13 +148,11 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
+            background: var(--gradient);
             padding: 6rem 0;
-            text-align: center;
             position: relative;
             overflow: hidden;
+            color: white;
         }
         
         .hero::before {
@@ -161,13 +162,16 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
             z-index: 0;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
             position: relative;
             z-index: 1;
         }
@@ -177,35 +181,19 @@
             margin-bottom: 1.5rem;
             font-weight: 800;
             line-height: 1.2;
-            color: var(--dark);
-        }
-        
-        .hero h2 span {
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .hero h2 span::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(37, 99, 235, 0.2);
-            z-index: -1;
+            animation: fadeInDown 1s ease;
         }
         
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
-            color: var(--gray);
+            animation: fadeInUp 1s ease;
         }
         
         .cta-button {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--light);
+            color: var(--primary);
             text-decoration: none;
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -214,32 +202,64 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
             border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-dark);
-            transition: var(--transition);
-            z-index: -1;
+            animation: pulse 2s infinite;
         }
         
         .cta-button:hover {
+            background-color: var(--dark);
+            color: white;
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
         
-        .cta-button:hover::before {
-            width: 100%;
-            left: 0;
-            right: auto;
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: var(--rounded);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
         }
         
         /* Courses Section */
@@ -319,33 +339,10 @@
             z-index: 2;
         }
         
-        .course-icon {
+        .course-image {
             height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--light-gray);
-            color: var(--primary);
-            font-size: 3.5rem;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .course-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
-            z-index: 0;
-        }
-        
-        .course-icon i {
-            position: relative;
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
         
         .course-content {
@@ -397,422 +394,16 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
         }
         
-        .course-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-dark);
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .course-btn:hover::before {
-            width: 100%;
-            left: 0;
-            right: auto;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .about-text p {
-            margin-bottom: 1.2rem;
-            color: var(--gray);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.2rem;
-            background: var(--light-gray);
-            border-radius: var(--rounded-sm);
-            border-left: 3px solid var(--primary);
-        }
-        
-        .feature-icon {
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .feature-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .feature-text p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            color: var(--gray);
-        }
-        
-        .developer-card {
-            flex: 0 0 300px;
-            background: var(--light);
-            border-radius: var(--rounded);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-        
-        .developer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .developer-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-light);
-            margin: 0 auto 1.5rem;
-        }
-        
-        .developer-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .developer-card p {
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            color: var(--primary);
-            font-size: 1.3rem;
-            transition: var(--transition);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-        }
-        
-        .social-links a:hover {
-            color: white;
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        /* Goal Map Section */
-        .goal-map-container {
-            background: var(--light);
-            border-radius: var(--rounded);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .goal-map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
-            z-index: 0;
-        }
-        
-        .goal-steps {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .step-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-            width: 100px;
-        }
-        
-        .step-indicator:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 50px;
-            width: 100px;
-            height: 3px;
-            background: var(--border);
-            z-index: 0;
-        }
-        
-        .step-indicator.active:not(:last-child)::after {
-            background: var(--primary);
-        }
-        
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            border: 2px solid var(--border);
-            transition: var(--transition);
-        }
-        
-        .step-indicator.active .step-number {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .step-title {
-            font-size: 0.9rem;
-            text-align: center;
-            color: var(--gray);
-        }
-        
-        .step-indicator.active .step-title {
-            color: var(--dark);
-            font-weight: 600;
-        }
-        
-        .goal-step {
-            display: none;
-            animation: fadeIn 0.5s ease;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .goal-step.active {
-            display: block;
-        }
-        
-        .goal-step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            text-align: center;
-        }
-        
-        .goal-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .goal-option {
-            background: var(--light-gray);
-            border: 1px solid var(--border);
-            border-radius: var(--rounded-sm);
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .goal-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(37, 99, 235, 0.1);
-            transition: var(--transition);
-            z-index: 0;
-        }
-        
-        .goal-option:hover {
-            border-color: var(--primary);
-        }
-        
-        .goal-option:hover::before {
-            width: 100%;
-            left: 0;
-            right: auto;
-        }
-        
-        .goal-option.selected {
-            border-color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-        
-        .goal-option-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .goal-option h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .goal-option p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .goal-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-        
-        .nav-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: var(--rounded-sm);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-dark);
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .nav-btn:hover::before {
-            width: 100%;
-            left: 0;
-            right: auto;
-        }
-        
-        .nav-btn:disabled {
-            background: var(--gray);
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        
-        .nav-btn:hover:not(:disabled) {
-            background: var(--primary-dark);
-        }
-        
-        .goal-result {
-            text-align: center;
-            padding: 2rem;
-            display: none;
-        }
-        
-        .goal-result h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .goal-result p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .goal-path {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .path-step {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .path-step i {
-            font-size: 1.2rem;
+        .course-btn:hover {
+            background-color: var(--primary-dark);
         }
         
         /* Testimonials */
-        .testimonials-section {
-            background: var(--light-gray);
+        .testimonials {
+            background: var(--dark-gray);
+            color: white;
             padding: 5rem 0;
         }
         
@@ -822,10 +413,9 @@
         }
         
         .testimonial {
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: var(--rounded);
             padding: 2rem;
-            box-shadow: var(--shadow);
             margin: 2rem 0;
             position: relative;
             border-left: 4px solid var(--primary);
@@ -834,7 +424,6 @@
         .testimonial-content {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--gray);
             margin-bottom: 1.5rem;
             position: relative;
         }
@@ -845,7 +434,7 @@
             top: -20px;
             right: -10px;
             font-size: 5rem;
-            color: rgba(37, 99, 235, 0.1);
+            color: rgba(255, 255, 255, 0.1);
             font-family: Georgia, serif;
         }
         
@@ -881,8 +470,83 @@
         }
         
         .author-info p {
-            color: var(--gray);
+            color: var(--light-gray);
             font-size: 0.9rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--light);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: var(--gradient);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--rounded-sm);
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            background: var(--light);
+            color: var(--primary);
+            border: none;
+            padding: 0 2rem;
+            border-radius: var(--rounded-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--dark);
+            color: white;
         }
         
         /* Footer */
@@ -938,6 +602,29 @@
             transform: translateX(5px);
         }
         
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 2rem;
@@ -946,143 +633,7 @@
             font-size: 0.9rem;
         }
         
-        /* Terms Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-        
-        .modal-content {
-            background: var(--light);
-            width: 90%;
-            max-width: 800px;
-            border-radius: var(--rounded);
-            overflow: hidden;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .modal-header {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-header h3 {
-            font-size: 1.5rem;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal-body {
-            padding: 2rem;
-            color: var(--dark);
-        }
-        
-        .modal-body h4 {
-            font-size: 1.3rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--primary);
-        }
-        
-        .modal-body p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        
-        .modal-body ul {
-            padding-right: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-body li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-right: 1.2rem;
-        }
-        
-        .modal-body li::before {
-            content: '•';
-            color: var(--primary);
-            font-size: 1.5rem;
-            position: absolute;
-            right: 0;
-            top: -0.3rem;
-        }
-        
-        .accept-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding: 1rem;
-            background: var(--light-gray);
-            border-radius: var(--rounded-sm);
-        }
-        
-        .terms-agreement {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        
-        .accept-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: var(--rounded-sm);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            align-self: flex-start;
-        }
-        
-        .accept-btn:hover {
-            background: var(--primary-dark);
-        }
-        
-        .reject-btn {
-            background: var(--error);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: var(--rounded-sm);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            align-self: flex-start;
-        }
-        
-        .reject-btn:hover {
-            background: #dc2626;
-        }
-        
-        .buttons-container {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        /* Course Registration Form */
+        /* Forms */
         .form-container {
             max-width: 700px;
             margin: 0 auto;
@@ -1091,19 +642,6 @@
             padding: 2.5rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
-            z-index: 0;
         }
         
         .form-title {
@@ -1111,14 +649,10 @@
             font-size: 1.8rem;
             margin-bottom: 2rem;
             color: var(--dark);
-            position: relative;
-            z-index: 1;
         }
         
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
         }
         
         .form-group label {
@@ -1135,7 +669,6 @@
             border-radius: var(--rounded-sm);
             font-size: 1rem;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.8);
         }
         
         .form-control:focus {
@@ -1160,42 +693,43 @@
             font-size: 1.1rem;
             transition: var(--transition);
             display: block;
-            margin: 2rem auto 0;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-dark);
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .submit-btn:hover::before {
             width: 100%;
-            left: 0;
-            right: auto;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease;
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .developer-card {
-                margin-top: 2rem;
             }
         }
         
@@ -1236,16 +770,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .goal-steps {
-                flex-wrap: wrap;
-            }
-            
-            .step-indicator {
-                margin-bottom: 1.5rem;
-            }
-            
-            .step-indicator:not(:last-child)::after {
-                display: none;
+            .newsletter-form {
+                flex-direction: column;
             }
         }
         
@@ -1262,72 +788,13 @@
                 font-size: 1.1rem;
             }
             
-            .goal-map-container {
-                padding: 1.5rem;
-            }
-            
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .buttons-container {
-                flex-direction: column;
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <!-- Terms Modal -->
-    <div class="modal" id="termsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>شروط الاستخدام وسياسة الخصوصية</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>شروط الاستخدام</h4>
-                <p>باستخدامك لمنصة "ابدأ طريقك"، فإنك توافق على الالتزام بالشروط والأحكام التالية:</p>
-                <ul>
-                    <li>جميع المحتويات التعليمية مقدمة لغرض التعلم الشخصي فقط</li>
-                    <li>يمنع إعادة توزيع أو بيع المحتوى التعليمي بدون إذن مسبق</li>
-                    <li>المنصة غير مسؤولة عن أي أضرار ناتجة عن استخدام المعلومات المقدمة</li>
-                    <li>يحق للمنصة تحديث أو تعديل الشروط في أي وقت</li>
-                    <li>يجب أن تكون المعلومات المقدمة في نماذج التسجيل صحيحة وكاملة</li>
-                    <li>يجب احترام حقوق الملكية الفكرية لجميع المحتويات التعليمية</li>
-                    <li>يمنع استخدام المنصة لأي أغراض غير قانونية أو غير أخلاقية</li>
-                </ul>
-                
-                <h4>سياسة الخصوصية</h4>
-                <p>نحن نلتزم بحماية خصوصية مستخدمينا وبياناتهم الشخصية:</p>
-                <ul>
-                    <li>نقوم بجمع المعلومات اللازمة لتقديم الخدمات وتحسين تجربة المستخدم</li>
-                    <li>لا نشارك معلوماتك الشخصية مع أطراف ثالثة دون موافقتك</li>
-                    <li>نستخدم تقنيات الحماية المناسبة لحماية بياناتك</li>
-                    <li>نحتفظ بالبيانات طالما كانت ضرورية لتقديم الخدمات</li>
-                    <li>لديك الحق في الوصول إلى بياناتك وتعديلها أو حذفها</li>
-                    <li>نستخدم ملفات تعريف الارتباط لتحسين تجربة المستخدم</li>
-                    <li>نلتزم بمواكبة أحدث معايير حماية البيانات</li>
-                </ul>
-                
-                <div class="accept-container">
-                    <div class="terms-agreement">
-                        <input type="checkbox" id="acceptTerms">
-                        <label for="acceptTerms">أقرأ وأوافق على شروط الاستخدام وسياسة الخصوصية</label>
-                    </div>
-                    <div class="buttons-container">
-                        <button class="accept-btn" id="acceptTermsBtn">قبول والمتابعة</button>
-                        <button class="reject-btn" id="rejectTermsBtn">رفض</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -1339,10 +806,10 @@
                 <ul id="navMenu">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#courses">الدورات</a></li>
-                    <li><a href="#goal-map">خريطة الأهداف</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#testimonials">آراء الطلاب</a></li>
                     <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#" class="cta-button">تسجيل الدخول</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -1360,24 +827,61 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>تعليم مجاني بالكامل</h3>
+                    <p>جميع دوراتنا مجانية بالكامل بدون أي تكاليف خفية</p>
+                </div>
+                
+                <div class="feature-card animate" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>دعم فني متكامل</h3>
+                    <p>فريق دعم فني متاح للإجابة على استفساراتك طوال اليوم</p>
+                </div>
+                
+                <div class="feature-card animate" style="animation-delay: 0.4s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>مشاريع عملية</h3>
+                    <p>تطبيق عملي على مشاريع حقيقية خلال رحلة التعلم</p>
+                </div>
+                
+                <div class="feature-card animate" style="animation-delay: 0.6s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>شهادات معتمدة</h3>
+                    <p>شهادات إتمام معتمدة بعد إتمام كل دورة بنجاح</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Courses Section -->
     <section class="section" id="courses">
         <div class="container">
             <div class="section-title">
-                <h2>الدورات المتاحة</h2>
+                <h2>أهم الدورات</h2>
                 <p>اختر من بين دوراتنا المتخصصة وابدأ رحلتك في عالم البرمجة</p>
             </div>
             
             <div class="courses-grid">
                 <!-- Course 1 -->
-                <div class="course-card">
+                <div class="course-card animate">
                     <div class="course-badge">الأكثر طلباً</div>
-                    <div class="course-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
+                    <div class="course-image" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="course-content">
                         <h3>تطوير الويب الشامل</h3>
-                        <p>دورة شاملة تغطي جميع جوانب تطوير الويب من البداية حتى الاحتراف. ستتعلم HTML, CSS, JavaScript, React, Node.js وتقنيات حديثة أخرى لبناء تطبيقات ويب كاملة. تتضمن الدورة مشاريع عملية ومتابعة مستمرة من المدربين.</p>
+                        <p>دورة شاملة تغطي جميع جوانب تطوير الويب من البداية حتى الاحتراف. ستتعلم HTML, CSS, JavaScript, React, Node.js وتقنيات حديثة أخرى لبناء تطبيقات ويب كاملة.</p>
                         <div class="course-meta">
                             <div><i class="far fa-clock"></i> 120 ساعة</div>
                             <div><i class="fas fa-user-graduate"></i> متقدم</div>
@@ -1389,14 +893,12 @@
                 </div>
                 
                 <!-- Course 2 -->
-                <div class="course-card">
+                <div class="course-card animate" style="animation-delay: 0.2s;">
                     <div class="course-badge">جديد</div>
-                    <div class="course-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
+                    <div class="course-image" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="course-content">
                         <h3>تطوير التطبيقات</h3>
-                        <p>احترف تطوير تطبيقات الهواتف المحمولة لنظامي iOS و Android. الدورة تغطي React Native, Flutter, Kotlin و Swift لبناء تطبيقات احترافية قابلة للنشر على المتاجر. ستتعلم كيفية إنشاء تطبيقات تفاعلية مع واجهات مستخدم جذابة.</p>
+                        <p>احترف تطوير تطبيقات الهواتف المحمولة لنظامي iOS و Android. الدورة تغطي React Native, Flutter, Kotlin و Swift لبناء تطبيقات احترافية قابلة للنشر على المتاجر.</p>
                         <div class="course-meta">
                             <div><i class="far fa-clock"></i> 90 ساعة</div>
                             <div><i class="fas fa-user-graduate"></i> متوسط</div>
@@ -1408,33 +910,12 @@
                 </div>
                 
                 <!-- Course 3 -->
-                <div class="course-card">
+                <div class="course-card animate" style="animation-delay: 0.4s;">
                     <div class="course-badge">مميز</div>
-                    <div class="course-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>تطوير الأدوات</h3>
-                        <p>تعلم كيفية تطوير الأدوات والبرامج المساعدة التي تحسن سير العمل البرمجي. تشمل الدورة تطوير إضافات المتصفح، برامج الأتمتة، أدوات سطر الأوامر، ومكتبات مساعدة. ستتعلم كيفية بناء أدوات تزيد من إنتاجيتك وتوفر وقتك.</p>
-                        <div class="course-meta">
-                            <div><i class="far fa-clock"></i> 60 ساعة</div>
-                            <div><i class="fas fa-user-graduate"></i> متقدم</div>
-                        </div>
-                        <button class="course-btn" data-course="تطوير الأدوات">
-                            <i class="fas fa-user-plus"></i> التسجيل في الدورة
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Course 4 -->
-                <div class="course-card">
-                    <div class="course-badge">مطلوب</div>
-                    <div class="course-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
+                    <div class="course-image" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1581094794329-16a62e7fdc4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="course-content">
                         <h3>أدوات الذكاء الاصطناعي</h3>
-                        <p>استكشف عالم الذكاء الاصطناعي وتعلم استخدام أهم الأدوات والمكتبات مثل TensorFlow, PyTorch. الدورة تشمل معالجة اللغة، الرؤية الحاسوبية، والتعلم العميق. ستتعلم كيفية بناء نماذج ذكية وحل مشاكل معقدة باستخدام الذكاء الاصطناعي.</p>
+                        <p>استكشف عالم الذكاء الاصطناعي وتعلم استخدام أهم الأدوات والمكتبات مثل TensorFlow, PyTorch. الدورة تشمل معالجة اللغة، الرؤية الحاسوبية، والتعلم العميق.</p>
                         <div class="course-meta">
                             <div><i class="far fa-clock"></i> 100 ساعة</div>
                             <div><i class="fas fa-user-graduate"></i> متوسط</div>
@@ -1444,309 +925,44 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Course 5 -->
-                <div class="course-card">
-                    <div class="course-badge">أساسي</div>
-                    <div class="course-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>تطوير البرمجيات</h3>
-                        <p>دورة متكاملة في هندسة البرمجيات وتطوير الأنظمة. تغطي مفاهيم هندسة البرمجيات، أنماط التصميم، قواعد البيانات، الخوارزميات وهياكل البيانات. ستتعلم كيفية بناء أنظمة برمجية قوية وقابلة للصيانة والتطوير.</p>
-                        <div class="course-meta">
-                            <div><i class="far fa-clock"></i> 110 ساعة</div>
-                            <div><i class="fas fa-user-graduate"></i> مبتدئ</div>
-                        </div>
-                        <button class="course-btn" data-course="تطوير البرمجيات">
-                            <i class="fas fa-user-plus"></i> التسجيل في الدورة
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Course 6 -->
-                <div class="course-card">
-                    <div class="course-badge">عملي</div>
-                    <div class="course-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>تطوير بوتات تلجرام</h3>
-                        <p>دورة متخصصة في تطوير بوتات تلجرام باستخدام Python و Node.js. ستتعلم إنشاء بوتات تفاعلية متقدمة، إدارة الحالات، التعامل مع قواعد البيانات، وإرسال الإشعارات. ستقوم ببناء بوتات حقيقية يمكن نشرها واستخدامها فوراً.</p>
-                        <div class="course-meta">
-                            <div><i class="far fa-clock"></i> 40 ساعة</div>
-                            <div><i class="fas fa-user-graduate"></i> مبتدئ</div>
-                        </div>
-                        <button class="course-btn" data-course="تطوير بوتات تلجرام">
-                            <i class="fas fa-user-plus"></i> التسجيل في الدورة
-                        </button>
-                    </div>
-                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="cta-button">تصفح جميع الدورات</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
+    <!-- Stats Section -->
+    <section class="stats">
         <div class="container">
-            <div class="section-title">
-                <h2>من نحن</h2>
-                <p>تعرف على منصة "ابدأ طريقك" وفريق العمل</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>رؤيتنا ورسالتنا</h2>
-                    <p>منصة "ابدأ طريقك" هي مبادرة تعليمية تهدف إلى تمكين الشباب العربي من دخول عالم البرمجة وتطوير البرمجيات بسهولة وبدون تكاليف. نؤمن بأن المعرفة يجب أن تكون متاحة للجميع، ونسعى إلى توفير محتوى عالي الجودة باللغة العربية.</p>
-                    <p>تقدم المنصة دورات تدريبية متخصصة في مجالات البرمجة المختلفة عبر قنوات تلجرام، مما يسهل على المتعلمين الوصول إلى المحتوى في أي وقت ومن أي مكان. نركز على الجانب العملي والتطبيقي لضمان اكتساب المهارات الحقيقية التي يحتاجها سوق العمل.</p>
-                    <p>تهدف المنصة إلى بناء مجتمع برمجي عربي قوي، حيث يمكن للمتعلمين تبادل الخبرات، العمل على مشاريع مشتركة، ومساعدة بعضهم البعض في رحلتهم التعليمية والمهنية.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>تعليم مجاني بالكامل</h4>
-                                <p>جميع دوراتنا مجانية بالكامل بدون أي تكاليف خفية</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-hands-helping"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>دعم فني متكامل</h4>
-                                <p>فريق دعم فني متاح للإجابة على استفساراتك طوال اليوم</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>مشاريع عملية</h4>
-                                <p>تطبيق عملي على مشاريع حقيقية خلال رحلة التعلم</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>شهادات معتمدة</h4>
-                                <p>شهادات إتمام معتمدة بعد إتمام كل دورة بنجاح</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-item animate">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number">7,500+</div>
+                    <div class="stat-label">طالب مسجل</div>
                 </div>
-                
-                <div class="developer-card">
-                    <img src="https://avatars.githubusercontent.com/u/55729253?v=4" alt="عمر م. عتمان">
-                    <h3>عمر م. عتمان</h3>
-                    <p>مطور ومؤسس المنصة</p>
-                    <div class="social-links">
-                        <a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-globe"></i></a>
-                        <a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="https://github.com/oomaretman" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://twitter.com/oomaretman" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
+                <div class="stat-item animate" style="animation-delay: 0.2s;">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">دورة تدريبية</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Goal Map Section -->
-    <section class="section" id="goal-map">
-        <div class="container">
-            <div class="section-title">
-                <h2>خريطة الأهداف</h2>
-                <p>اختر المسار التعليمي المناسب لك بناءً على أهدافك</p>
-            </div>
-            
-            <div class="goal-map-container">
-                <div class="goal-steps">
-                    <div class="step-indicator active">
-                        <div class="step-number">1</div>
-                        <div class="step-title">المستوى</div>
-                    </div>
-                    <div class="step-indicator">
-                        <div class="step-number">2</div>
-                        <div class="step-title">المجال</div>
-                    </div>
-                    <div class="step-indicator">
-                        <div class="step-number">3</div>
-                        <div class="step-title">الهدف</div>
-                    </div>
-                    <div class="step-indicator">
-                        <div class="step-number">4</div>
-                        <div class="step-title">النتيجة</div>
-                    </div>
+                <div class="stat-item animate" style="animation-delay: 0.4s;">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">مدرب محترف</div>
                 </div>
-                
-                <div class="goal-step active" id="step1">
-                    <h3>ما هو مستوى خبرتك الحالي في البرمجة؟</h3>
-                    <div class="goal-options">
-                        <div class="goal-option" data-value="beginner">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <h4>مبتدئ</h4>
-                            <p>لا أملك أي خبرة في البرمجة</p>
-                        </div>
-                        <div class="goal-option" data-value="intermediate">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4>متوسط</h4>
-                            <p>لدي معرفة أساسية بالبرمجة</p>
-                        </div>
-                        <div class="goal-option" data-value="advanced">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h4>متقدم</h4>
-                            <p>لدي خبرة جيدة في البرمجة</p>
-                        </div>
-                    </div>
-                    <div class="goal-nav">
-                        <button class="nav-btn" disabled>
-                            <i class="fas fa-arrow-left"></i> السابق
-                        </button>
-                        <button class="nav-btn" id="next1">
-                            التالي <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="goal-step" id="step2">
-                    <h3>ما هو المجال الذي ترغب في التخصص فيه؟</h3>
-                    <div class="goal-options">
-                        <div class="goal-option" data-value="web">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h4>تطوير الويب</h4>
-                            <p>بناء مواقع وتطبيقات الويب</p>
-                        </div>
-                        <div class="goal-option" data-value="mobile">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h4>تطوير التطبيقات</h4>
-                            <p>تطوير تطبيقات الهواتف</p>
-                        </div>
-                        <div class="goal-option" data-value="ai">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4>الذكاء الاصطناعي</h4>
-                            <p>تطوير أنظمة الذكاء الاصطناعي</p>
-                        </div>
-                        <div class="goal-option" data-value="tools">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h4>تطوير الأدوات</h4>
-                            <p>بناء أدوات برمجية مساعدة</p>
-                        </div>
-                    </div>
-                    <div class="goal-nav">
-                        <button class="nav-btn" id="prev2">
-                            <i class="fas fa-arrow-left"></i> السابق
-                        </button>
-                        <button class="nav-btn" id="next2">
-                            التالي <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="goal-step" id="step3">
-                    <h3>ما هو هدفك الرئيسي من التعلم؟</h3>
-                    <div class="goal-options">
-                        <div class="goal-option" data-value="job">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <h4>الحصول على وظيفة</h4>
-                            <p>أريد العمل كمطور محترف</p>
-                        </div>
-                        <div class="goal-option" data-value="freelance">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h4>العمل الحر</h4>
-                            <p>أريد العمل كمستقل</p>
-                        </div>
-                        <div class="goal-option" data-value="startup">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4>بدء مشروع خاص</h4>
-                            <p>أريد بناء مشروعي الخاص</p>
-                        </div>
-                        <div class="goal-option" data-value="skills">
-                            <div class="goal-option-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h4>تطوير المهارات</h4>
-                            <p>أريد تعلم مهارات جديدة</p>
-                        </div>
-                    </div>
-                    <div class="goal-nav">
-                        <button class="nav-btn" id="prev3">
-                            <i class="fas fa-arrow-left"></i> السابق
-                        </button>
-                        <button class="nav-btn" id="next3">
-                            التالي <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="goal-result" id="result">
-                    <h3>مسارك التعليمي الموصى به</h3>
-                    <p>بناءً على اختياراتك، ننصحك بالبدء في الدورة التالية:</p>
-                    
-                    <div class="goal-path">
-                        <div class="path-step">
-                            <i class="fas fa-user-graduate"></i> <span id="path-level">مبتدئ</span>
-                        </div>
-                        <div class="path-step">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <div class="path-step">
-                            <i class="fas fa-laptop-code"></i> <span id="path-field">تطوير الويب</span>
-                        </div>
-                        <div class="path-step">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <div class="path-step">
-                            <i class="fas fa-briefcase"></i> <span id="path-goal">وظيفة</span>
-                        </div>
-                    </div>
-                    
-                    <div class="course-card" id="recommendedCourse" style="max-width: 500px; margin: 0 auto;">
-                        <div class="course-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="course-content">
-                            <h3 id="courseTitle">تطوير الويب الشامل</h3>
-                            <p id="courseDesc">الدورة الشاملة لتطوير الويب من الصفر حتى الاحتراف</p>
-                            <button class="course-btn">
-                                <i class="fas fa-user-plus"></i> التسجيل في الدورة
-                            </button>
-                        </div>
-                    </div>
-                    <button class="cta-button" id="restartQuiz" style="margin-top: 2rem;">
-                        <i class="fas fa-redo"></i> إعادة الاختبار
-                    </button>
+                <div class="stat-item animate" style="animation-delay: 0.6s;">
+                    <i class="fas fa-project-diagram"></i>
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">مشروع طلابي</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>آراء طلابنا</h2>
@@ -1754,7 +970,7 @@
             </div>
             
             <div class="testimonials-container">
-                <div class="testimonial">
+                <div class="testimonial animate">
                     <div class="testimonial-content">
                         دورة تطوير الويب غيرت مساري المهني تماماً. بعد إكمال الدورة، تمكنت من الحصول على وظيفة كمطور ويب في شركة تقنية رائدة. المحتوى غني ومفصل، والمدربون متاحون دائماً للإجابة على الأسئلة.
                     </div>
@@ -1769,7 +985,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial">
+                <div class="testimonial animate" style="animation-delay: 0.2s;">
                     <div class="testimonial-content">
                         تعلمت تطوير تطبيقات الهواتف من خلال هذه المنصة، وبدأت العمل كمستقل خلال 3 أشهر فقط. المنظمة ممتازة، والدروس عملية وتركز على الجانب التطبيقي. أنصح أي شخص يريد تعلم البرمجة بالبدء مع "ابدأ طريقك".
                     </div>
@@ -1784,7 +1000,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial">
+                <div class="testimonial animate" style="animation-delay: 0.4s;">
                     <div class="testimonial-content">
                         دورة الذكاء الاصطناعي كانت نقطة تحول في مسيرتي المهنية. المحتوى المتقدم والتمارين العملية ساعدتني في تطوير مهاراتي بشكل كبير. الآن أعمل في مجال تحليل البيانات والذكاء الاصطناعي بثقة.
                     </div>
@@ -1799,6 +1015,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>اشترك في نشرتنا البريدية</h2>
+            <p>ابق على اطلاع بأحدث الدورات والعروض الخاصة</p>
+            
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني" required>
+                <button type="submit" class="newsletter-btn">اشتراك</button>
+            </form>
         </div>
     </section>
 
@@ -1855,45 +1084,49 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#about">عن المنصة</a></li>
                         <li><a href="#courses">الدورات التدريبية</a></li>
-                        <li><a href="#goal-map">خريطة الأهداف</a></li>
                         <li><a href="#testimonials">آراء الطلاب</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-col">
                     <h4>الدورات</h4>
                     <ul class="footer-links">
-                        <li><a href="#" data-course="web">تطوير الويب</a></li>
-                        <li><a href="#" data-course="mobile">تطوير التطبيقات</a></li>
-                        <li><a href="#" data-course="tools">تطوير الأدوات</a></li>
-                        <li><a href="#" data-course="ai">أدوات الذكاء الاصطناعي</a></li>
-                        <li><a href="#" data-course="software">تطوير البرمجيات</a></li>
-                        <li><a href="#" data-course="bots">تطوير بوتات تيليجرام</a></li>
+                        <li><a href="#">تطوير الويب</a></li>
+                        <li><a href="#">تطوير التطبيقات</a></li>
+                        <li><a href="#">أدوات الذكاء الاصطناعي</a></li>
+                        <li><a href="#">تطوير البرمجيات</a></li>
+                        <li><a href="#">تطوير بوتات تيليجرام</a></li>
+                        <li><a href="#">قواعد البيانات</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>روابط مهمة</h4>
                     <ul class="footer-links">
-                        <li><a href="#" id="privacyLink">سياسة الخصوصية</a></li>
-                        <li><a href="#" id="termsLink">شروط الاستخدام</a></li>
-                        <li><a href="#" id="helpCenterLink">مركز المساعدة</a></li>
-                        <li><a href="#" id="blogLink">المدونة</a></li>
-                        <li><a href="#" id="projectsLink">مشاريع المتعلمين</a></li>
-                        <li><a href="#" id="jobsLink">الوظائف الشاغرة</a></li>
-                        <li><a href="#" id="partnersLink">الشركاء</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="#">مشاريع المتعلمين</a></li>
+                        <li><a href="#">الوظائف الشاغرة</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>تواصل معنا</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@startyourpath.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
-                        <li><a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i> بوت التيليجرام</a></li>
-                        <li><a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-globe"></i> موقع المطور</a></li>
-                        <li><a href="https://github.com/oomaretman" target="_blank"><i class="fab fa-github"></i> جيت هب</a></li>
-                        <li><a href="https://twitter.com/oomaretman" target="_blank"><i class="fab fa-twitter"></i> تويتر</a></li>
+                        <li><i class="fas fa-envelope"></i> info@startyourpath.com</li>
+                        <li><i class="fab fa-telegram"></i> @startyourpath_bot</li>
+                        <li><i class="fas fa-phone"></i> +966 55 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
                     </ul>
                 </div>
             </div>
@@ -1905,55 +1138,35 @@
     </footer>
 
     <!-- Course Registration Modal -->
-    <div class="modal" id="courseRegisterModal">
+    <div class="modal" id="courseModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="courseModalTitle">التسجيل في الدورة</h3>
+                <h3>التسجيل في الدورة</h3>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="courseForm">
                     <div class="form-group">
-                        <label for="fullname">الاسم الكامل</label>
-                        <input type="text" id="fullname" class="form-control" required>
+                        <label for="courseFullName">الاسم الكامل</label>
+                        <input type="text" id="courseFullName" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">رقم الهاتف</label>
-                        <input type="tel" id="phone" class="form-control" required>
+                        <label for="coursePhone">رقم الهاتف</label>
+                        <input type="tel" id="coursePhone" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="telegram">اسم مستخدم تلجرام</label>
-                        <input type="text" id="telegram" class="form-control" required placeholder="@username">
+                        <label for="courseTelegram">اسم مستخدم تلجرام</label>
+                        <input type="text" id="courseTelegram" class="form-control" required placeholder="@username">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="form-control" required>
+                        <label for="courseEmail">البريد الإلكتروني</label>
+                        <input type="email" id="courseEmail" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="country">الدولة</label>
-                        <input type="text" id="country" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="experience">المستوى البرمجي الحالي</label>
-                        <select id="experience" class="form-control" required>
-                            <option value="">اختر مستوى خبرتك</option>
-                            <option value="beginner">مبتدئ (بدون خبرة)</option>
-                            <option value="intermediate">متوسط (بعض الخبرة)</option>
-                            <option value="advanced">متقدم (خبرة جيدة)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="background">الخبرة السابقة (إن وجدت)</label>
-                        <textarea id="background" class="form-control"></textarea>
-                    </div>
-                    
-                    <input type="hidden" id="courseName" value="">
+                    <input type="hidden" id="selectedCourse" value="">
                     
                     <button type="submit" class="submit-btn">تأكيد التسجيل</button>
                 </form>
@@ -1962,11 +1175,21 @@
     </div>
 
     <script>
-        // Show terms modal on first visit
+        // Telegram bot configuration
+        const BOT_TOKEN = '6366108438:AAES7MRRZwJCMiHSat7TZA4u1OOb_R1aVH8';
+        const CHAT_ID = '5572925321';
+        
+        // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            if (!localStorage.getItem('termsAccepted')) {
-                document.getElementById('termsModal').style.display = 'flex';
-            }
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+                mobileMenuBtn.innerHTML = navMenu.classList.contains('show') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
             
             // Header scroll effect
             const header = document.getElementById('header');
@@ -1978,50 +1201,13 @@
                 }
             });
             
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navMenu = document.getElementById('navMenu');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('show');
-                mobileMenuBtn.innerHTML = navMenu.classList.contains('show') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        if (navMenu.classList.contains('show')) {
-                            navMenu.classList.remove('show');
-                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                        }
-                    }
+            // Course registration buttons
+            document.querySelectorAll('.course-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const courseTitle = this.getAttribute('data-course');
+                    document.getElementById('selectedCourse').value = courseTitle;
+                    document.getElementById('courseModal').style.display = 'flex';
                 });
-            });
-            
-            // Accept terms button
-            document.getElementById('acceptTermsBtn').addEventListener('click', function() {
-                if (document.getElementById('acceptTerms').checked) {
-                    localStorage.setItem('termsAccepted', 'true');
-                    document.getElementById('termsModal').style.display = 'none';
-                } else {
-                    alert('يرجى الموافقة على الشروط والأحكام أولاً');
-                }
-            });
-            
-            // Reject terms button
-            document.getElementById('rejectTermsBtn').addEventListener('click', function() {
-                alert('عذراً، لا يمكنك استخدام المنصة بدون الموافقة على شروط الاستخدام وسياسة الخصوصية.');
             });
             
             // Close modal buttons
@@ -2033,257 +1219,115 @@
                 });
             });
             
-            // Goal map functionality
-            const steps = document.querySelectorAll('.goal-step');
-            const stepIndicators = document.querySelectorAll('.step-indicator');
-            let currentStep = 0;
-            const userSelections = {};
-            
-            // Initialize goal options
-            document.querySelectorAll('.goal-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    // Remove selected class from siblings
-                    this.parentElement.querySelectorAll('.goal-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to current option
-                    this.classList.add('selected');
-                });
-            });
-            
-            // Next buttons
-            document.getElementById('next1').addEventListener('click', function() {
-                const selected = document.querySelector('#step1 .goal-option.selected');
-                if (selected) {
-                    userSelections.level = selected.getAttribute('data-value');
-                    showStep(1);
-                } else {
-                    alert('يرجى اختيار مستوى خبرتك');
-                }
-            });
-            
-            document.getElementById('next2').addEventListener('click', function() {
-                const selected = document.querySelector('#step2 .goal-option.selected');
-                if (selected) {
-                    userSelections.field = selected.getAttribute('data-value');
-                    showStep(2);
-                } else {
-                    alert('يرجى اختيار مجال التخصص');
-                }
-            });
-            
-            document.getElementById('next3').addEventListener('click', function() {
-                const selected = document.querySelector('#step3 .goal-option.selected');
-                if (selected) {
-                    userSelections.goal = selected.getAttribute('data-value');
-                    showResults();
-                } else {
-                    alert('يرجى اختيار هدفك من التعلم');
-                }
-            });
-            
-            // Previous buttons
-            document.getElementById('prev2').addEventListener('click', function() {
-                showStep(0);
-            });
-            
-            document.getElementById('prev3').addEventListener('click', function() {
-                showStep(1);
-            });
-            
-            // Restart quiz
-            document.getElementById('restartQuiz').addEventListener('click', function() {
-                currentStep = 0;
-                document.querySelectorAll('.goal-option.selected').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                showStep(0);
-            });
-            
-            function showStep(stepIndex) {
-                // Update step indicators
-                stepIndicators.forEach((indicator, index) => {
-                    indicator.classList.remove('active');
-                    if (index <= stepIndex) {
-                        indicator.classList.add('active');
-                    }
-                });
-                
-                // Update steps
-                steps.forEach((step, index) => {
-                    step.classList.remove('active');
-                    if (index === stepIndex) {
-                        step.classList.add('active');
-                    }
-                });
-                
-                currentStep = stepIndex;
-            }
-            
-            function showResults() {
-                // Update step indicators
-                stepIndicators.forEach(indicator => {
-                    indicator.classList.add('active');
-                });
-                
-                // Update the result card
-                const levelNames = {
-                    'beginner': 'مبتدئ',
-                    'intermediate': 'متوسط',
-                    'advanced': 'متقدم'
-                };
-                
-                const fieldNames = {
-                    'web': 'تطوير الويب',
-                    'mobile': 'تطوير التطبيقات',
-                    'ai': 'الذكاء الاصطناعي',
-                    'tools': 'تطوير الأدوات'
-                };
-                
-                const goalNames = {
-                    'job': 'الحصول على وظيفة',
-                    'freelance': 'العمل الحر',
-                    'startup': 'بدء مشروع خاص',
-                    'skills': 'تطوير المهارات'
-                };
-                
-                // Set path names
-                document.getElementById('path-level').textContent = levelNames[userSelections.level] || 'مبتدئ';
-                document.getElementById('path-field').textContent = fieldNames[userSelections.field] || 'تطوير الويب';
-                document.getElementById('path-goal').textContent = goalNames[userSelections.goal] || 'وظيفة';
-                
-                // Determine recommended course based on selections
-                let recommendedCourse = {
-                    title: "تطوير الويب الشامل",
-                    desc: "الدورة الشاملة لتطوير الويب من الصفر حتى الاحتراف",
-                    icon: "fas fa-laptop-code"
-                };
-                
-                if (userSelections.field === "mobile") {
-                    recommendedCourse = {
-                        title: "تطوير التطبيقات",
-                        desc: "دورة متخصصة في تطوير تطبيقات الهواتف المحمولة",
-                        icon: "fas fa-mobile-alt"
-                    };
-                } else if (userSelections.field === "ai") {
-                    recommendedCourse = {
-                        title: "أدوات الذكاء الاصطناعي",
-                        desc: "دورة متقدمة في تطبيقات الذكاء الاصطناعي",
-                        icon: "fas fa-brain"
-                    };
-                } else if (userSelections.field === "tools") {
-                    recommendedCourse = {
-                        title: "تطوير الأدوات",
-                        desc: "دورة لبناء الأدوات البرمجية المساعدة",
-                        icon: "fas fa-tools"
-                    };
-                }
-                
-                // Update the result card
-                document.getElementById('courseTitle').textContent = recommendedCourse.title;
-                document.getElementById('courseDesc').textContent = recommendedCourse.desc;
-                document.querySelector('#recommendedCourse .course-icon i').className = recommendedCourse.icon;
-                
-                // Show the result step
-                document.querySelectorAll('.goal-step').forEach(step => {
-                    step.classList.remove('active');
-                });
-                document.getElementById('result').style.display = 'block';
-                
-                // Update step indicator to show step 4 active
-                showStep(3);
-            }
-            
-            // Course registration buttons
-            document.querySelectorAll('.course-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const courseTitle = this.getAttribute('data-course');
-                    
-                    // Set course name in hidden field
-                    document.getElementById('courseName').value = courseTitle;
-                    
-                    // Set modal title
-                    document.getElementById('courseModalTitle').textContent = `التسجيل في دورة: ${courseTitle}`;
-                    
-                    // Show registration modal
-                    document.getElementById('courseRegisterModal').style.display = 'flex';
-                });
-            });
-            
             // Form submissions
-            document.getElementById('courseForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Send to Telegram bot
-                const botToken = 'YOUR_BOT_TOKEN';
-                const chatId = 'YOUR_CHAT_ID';
-                const message = `طلب تسجيل جديد في الدورة:
-الدورة: ${document.getElementById('courseName').value}
-الاسم: ${document.getElementById('fullname').value}
-الهاتف: ${document.getElementById('phone').value}
-تيليجرام: ${document.getElementById('telegram').value}
-البريد: ${document.getElementById('email').value}
-الدولة: ${document.getElementById('country').value}
-المستوى: ${document.getElementById('experience').value}
-الخبرة: ${document.getElementById('background').value}`;
-                
-                const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-                
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        alert('تم تسجيلك في الدورة بنجاح! سيتم التواصل معك عبر البريد الإلكتروني بمزيد من التفاصيل.');
-                        this.reset();
-                        document.getElementById('courseRegisterModal').style.display = 'none';
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.');
-                    });
-            });
-            
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
-                this.reset();
+                sendFormToTelegram(this, 'contact');
             });
             
-            // Footer links
-            document.getElementById('privacyLink').addEventListener('click', function(e) {
+            document.getElementById('courseForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                document.getElementById('termsModal').style.display = 'flex';
-                document.querySelector('.modal-body').scrollTop = 300;
+                sendFormToTelegram(this, 'course');
             });
             
-            document.getElementById('termsLink').addEventListener('click', function(e) {
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                document.getElementById('termsModal').style.display = 'flex';
-                document.querySelector('.modal-body').scrollTop = 0;
+                sendFormToTelegram(this, 'newsletter');
             });
             
-            // Create placeholder pages for footer links
-            const footerLinks = ['helpCenterLink', 'blogLink', 'projectsLink', 'jobsLink', 'partnersLink'];
-            footerLinks.forEach(linkId => {
-                document.getElementById(linkId).addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert(`سيتم توجيهك إلى صفحة ${linkId.replace('Link', '')} في النسخة الكاملة من الموقع`);
-                });
-            });
-            
-            // Course links in footer
-            document.querySelectorAll('[data-course]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const course = this.getAttribute('data-course');
+            // Function to send form data to Telegram
+            function sendFormToTelegram(form, formType) {
+                let message = '';
+                
+                if (formType === 'contact') {
+                    const name = form.contactName.value;
+                    const email = form.contactEmail.value;
+                    const subject = form.subject.options[form.subject.selectedIndex].text;
+                    const messageText = form.contactMessage.value;
                     
-                    // Find the corresponding course card and scroll to it
-                    document.querySelectorAll('.course-card h3').forEach(title => {
-                        if (title.textContent.includes(course)) {
-                            title.closest('.course-card').scrollIntoView({behavior: 'smooth'});
+                    message = `📬 *رسالة تواصل جديدة* 📬
+                    
+👤 *الاسم:* ${name}
+📧 *البريد الإلكتروني:* ${email}
+📌 *الموضوع:* ${subject}
+📝 *الرسالة:*
+${messageText}`;
+                }
+                else if (formType === 'course') {
+                    const name = form.courseFullName.value;
+                    const phone = form.coursePhone.value;
+                    const telegram = form.courseTelegram.value;
+                    const email = form.courseEmail.value;
+                    const course = form.selectedCourse.value;
+                    
+                    message = `🎓 *طلب تسجيل في دورة* 🎓
+                    
+👤 *الاسم:* ${name}
+📱 *الهاتف:* ${phone}
+✈️ *تيليجرام:* ${telegram}
+📧 *البريد الإلكتروني:* ${email}
+📚 *الدورة:* ${course}`;
+                }
+                else if (formType === 'newsletter') {
+                    const email = form.querySelector('.newsletter-input').value;
+                    
+                    message = `📧 *اشتراك جديد في النشرة البريدية* 📧
+                    
+📬 *البريد الإلكتروني:* ${email}`;
+                }
+                
+                // Send to Telegram
+                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const data = {
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                };
+                
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.ok) {
+                        alert('تم إرسال بياناتك بنجاح! سيتم التواصل معك قريباً.');
+                        form.reset();
+                        
+                        if (formType === 'course') {
+                            document.getElementById('courseModal').style.display = 'none';
                         }
-                    });
+                    } else {
+                        alert('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.');
                 });
+            }
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                element.style.visibility = 'hidden';
+                element.style.animation = 'fadeIn 0.8s ease forwards';
+                observer.observe(element);
             });
         });
     </script>

@@ -917,6 +917,313 @@
             margin-bottom: 0.5rem;
         }
         
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .mobile-nav {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 0.8rem 1rem;
+            background: #f8fafc;
+            border-radius: var(--rounded-sm);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav a:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        /* Privacy Modal */
+        .privacy-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .privacy-modal.active {
+            display: flex;
+        }
+        
+        .privacy-content {
+            background: white;
+            border-radius: var(--rounded);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .close-privacy {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--danger);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .privacy-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .privacy-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--dark);
+        }
+        
+        .privacy-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        .privacy-content ul {
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .privacy-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 1.2rem;
+        }
+        
+        .privacy-content li::before {
+            content: '•';
+            color: var(--accent);
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: -0.3rem;
+        }
+        
+        .accept-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            text-align: center;
+        }
+        
+        .accept-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .accept-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Goal Quiz */
+        .quiz-container {
+            background: white;
+            border-radius: var(--rounded);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-step {
+            display: none;
+        }
+        
+        .quiz-step.active {
+            display: block;
+        }
+        
+        .quiz-question {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .quiz-option {
+            background: #f8fafc;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--rounded-sm);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .quiz-option.selected {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+        }
+        
+        .quiz-option i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-option h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .quiz-option p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quiz-progress {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        
+        .quiz-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .quiz-btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+        }
+        
+        .quiz-results {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .quiz-results h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .recommended-course {
+            background: white;
+            border-radius: var(--rounded);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero-container, .about-container {
@@ -985,10 +1292,86 @@
             .hero h1::after {
                 width: 200px;
             }
+            
+            .privacy-content {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Privacy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-content">
+            <button class="close-privacy" id="closePrivacy">&times;</button>
+            <h2>سياسة الخصوصية والشروط والأحكام</h2>
+            
+            <h3>مقدمة</h3>
+            <p>نحن في منصة "ابدأ طريقك" ندرك أهمية خصوصية بياناتك الشخصية ونلتزم بحمايتها. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وحماية معلوماتك الشخصية عند استخدامك لمنصتنا.</p>
+            
+            <h3>المعلومات التي نجمعها</h3>
+            <p>قد نجمع أنواعاً مختلفة من المعلومات عند استخدامك لمنصتنا:</p>
+            <ul>
+                <li>المعلومات الشخصية: الاسم الكامل، البريد الإلكتروني، معلومات الاتصال التي تقدمها عند التسجيل في الدورات أو التواصل معنا.</li>
+                <li>معلومات الاستخدام: البيانات المتعلقة بكيفية استخدامك للمنصة، مثل الصفحات التي تزورها، الوقت الذي تقضيه، والإجراءات التي تقوم بها.</li>
+                <li>المعلومات التقنية: عنوان IP، نوع المتصفح، إعدادات اللغة، ونظام التشغيل الذي تستخدمه.</li>
+            </ul>
+            
+            <h3>كيف نستخدم معلوماتك</h3>
+            <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+            <ul>
+                <li>تسجيلك في الدورات التدريبية التي تختارها</li>
+                <li>تحسين وتطوير تجربة المستخدم على المنصة</li>
+                <li>تزويدك بالمعلومات والتحديثات المتعلقة بالدورات</li>
+                <li>الرد على استفساراتك ورسائلك</li>
+                <li>تحليل استخدام المنصة لأغراض إحصائية وتحسين الخدمات</li>
+                <li>منع الاحتيال وحماية أمن المنصة</li>
+            </ul>
+            
+            <h3>الشروط والأحكام</h3>
+            <p>باستخدامك لمنصة "ابدأ طريقك" للتعلم البرمجي، فإنك توافق على الالتزام بهذه الشروط والأحكام:</p>
+            <ul>
+                <li>جميع المحتويات مقدمة مجاناً ولا يجوز استخدامها لأغراض تجارية</li>
+                <li>يحق للمنصة تحديث أو تعديل المحتوى في أي وقت دون إشعار مسبق</li>
+                <li>يجب أن تكون المعلومات المقدمة في نماذج التسجيل صحيحة وكاملة</li>
+                <li>يحق للمنصة إيقاف أو تعليق الحسابات المخالفة للشروط</li>
+                <li>المسؤولية عن الاستخدام الصحيح للمحتوى تقع على المستخدم</li>
+            </ul>
+            
+            <div class="accept-section">
+                <p>بالضغط على الزر أدناه، فإنك توافق على سياسة الخصوصية والشروط والأحكام المذكورة أعلاه</p>
+                <button class="accept-btn" id="acceptPrivacy">أوافق على الشروط</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-image">
+                    <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="شعار ابدأ طريقك">
+                </div>
+                <div class="logo-text">
+                    <h1 style="font-size: 1.5rem;">ابدأ طريقك</h1>
+                </div>
+            </div>
+            <button class="close-menu" id="closeMenu">&times;</button>
+        </div>
+        
+        <ul class="mobile-nav">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#courses">الدورات</a></li>
+            <li><a href="#goal-map">خريطة الأهداف</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+            <li><a href="#" id="showPrivacyMobile">الخصوصية والشروط</a></li>
+        </ul>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1010,7 +1393,7 @@
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#contact">تواصل معنا</a></li>
                 </ul>
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" id="openMenu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -1036,11 +1419,11 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-value">6+</div>
+                        <div class="stat-value">8+</div>
                         <div class="stat-label">دورات متخصصة</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">5,000+</div>
+                        <div class="stat-value">7,500+</div>
                         <div class="stat-label">متعلم نشط</div>
                     </div>
                     <div class="stat-item">
@@ -1218,6 +1601,57 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Course 7 -->
+                <div class="course-card">
+                    <div class="course-badge">جديد</div>
+                    <div class="course-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>دورة إدارة قواعد البيانات المتقدمة</h3>
+                        <p>تعلم تصميم وإدارة قواعد البيانات العلائقية واللارابطية. تشمل الدورة SQL، MySQL، PostgreSQL، MongoDB، Redis، وتحسين أداء قواعد البيانات.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check-circle"></i> تصميم قواعد البيانات العلائقية</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة قواعد البيانات اللارابطية</li>
+                            <li><i class="fas fa-check-circle"></i> تحسين أداء قواعد البيانات</li>
+                            <li><i class="fas fa-check-circle"></i> تأمين قواعد البيانات والحماية</li>
+                        </ul>
+                        
+                        <div class="course-footer">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i> 9 أسابيع
+                            </div>
+                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 8 -->
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>دورة أمن المعلومات والاختراق الأخلاقي</h3>
+                        <p>احترف أمن المعلومات والاختراق الأخلاقي لتأمين الأنظمة والشبكات. تشمل الدورة أساسيات الأمن السيبراني، اختبار الاختراق، أدوات الأمن، وحماية التطبيقات.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check-circle"></i> أساسيات الأمن السيبراني</li>
+                            <li><i class="fas fa-check-circle"></i> اختبار الاختراق الأخلاقي</li>
+                            <li><i class="fas fa-check-circle"></i> أدوات أمن المعلومات</li>
+                            <li><i class="fas fa-check-circle"></i> حماية التطبيقات والشبكات</li>
+                        </ul>
+                        
+                        <div class="course-footer">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i> 10 أسابيع
+                            </div>
+                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1231,47 +1665,134 @@
                 <p class="section-description">اختر مسارك التعليمي بناءً على أهدافك ومهاراتك الحالية، وابدأ رحلتك البرمجية بثقة</p>
             </div>
             
-            <div class="map-container">
-                <div class="map-steps">
-                    <div class="map-step">
-                        <div class="step-number">1</div>
-                        <h3>تحديد مستوى الخبرة</h3>
-                        <p>ابدأ بتقييم مستوى خبرتك الحالي في البرمجة. اختر بين مبتدئ (بدون خبرة)، متوسط (معرفة أساسية)، أو متقدم (خبرة في البرمجة).</p>
+            <div class="quiz-container">
+                <div class="quiz-step active" id="step1">
+                    <h3 class="quiz-question">ما هو مستوى خبرتك الحالي في البرمجة؟</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="beginner">
+                            <i class="fas fa-seedling"></i>
+                            <h4>مبتدئ</h4>
+                            <p>لا أملك خبرة سابقة أو لدي معرفة بسيطة جداً</p>
+                        </div>
+                        <div class="quiz-option" data-value="intermediate">
+                            <i class="fas fa-tree"></i>
+                            <h4>متوسط</h4>
+                            <p>لدي معرفة بالأساسيات وقمت ببعض المشاريع البسيطة</p>
+                        </div>
+                        <div class="quiz-option" data-value="advanced">
+                            <i class="fas fa-mountain"></i>
+                            <h4>متقدم</h4>
+                            <p>لدي خبرة جيدة وأعمل على مشاريع متوسطة التعقيد</p>
+                        </div>
                     </div>
-                    
-                    <div class="map-step">
-                        <div class="step-number">2</div>
-                        <h3>اختيار مجال التخصص</h3>
-                        <p>حدد المجال الذي ترغب في التخصص فيه: تطوير الويب، تطوير التطبيقات، الذكاء الاصطناعي، أو تطوير البرمجيات والأدوات.</p>
-                    </div>
-                    
-                    <div class="map-step">
-                        <div class="step-number">3</div>
-                        <h3>وضع الأهداف المهنية</h3>
-                        <p>حدد أهدافك المهنية: هل تبحث عن وظيفة، تطوير مشروع خاص، أو تحسين مهاراتك الحالية؟ هذا يساعد في تخصيص المسار.</p>
-                    </div>
-                    
-                    <div class="map-step">
-                        <div class="step-number">4</div>
-                        <h3>اختيار المسار التعليمي</h3>
-                        <p>بناءً على الخطوات السابقة، سوف نوصي بمسار تعليمي متكامل يشمل الدورات والمشاريع العملية المناسبة لك.</p>
-                    </div>
-                    
-                    <div class="map-step">
-                        <div class="step-number">5</div>
-                        <h3>البدء في التعلم</h3>
-                        <p>ابدأ رحلتك التعليمية من خلال الدورات الموصى بها، مع التركيز على المشاريع العملية وبناء محفظة أعمال قوية.</p>
-                    </div>
-                    
-                    <div class="map-step">
-                        <div class="step-number">6</div>
-                        <h3>المتابعة والتطوير</h3>
-                        <p>تابع تقدمك، شارك في مشاريع جماعية، واطلب التغذية الراجعة لمواصلة تطوير مهاراتك وتحقيق أهدافك.</p>
+                    <div class="quiz-navigation">
+                        <span class="quiz-progress">السؤال 1 من 4</span>
+                        <button class="quiz-btn" id="next1">التالي <i class="fas fa-arrow-left"></i></button>
                     </div>
                 </div>
                 
-                <div class="map-action">
-                    <a href="#" class="btn btn-primary">ابدأ مسارك التعليمي الآن <i class="fas fa-arrow-left"></i></a>
+                <div class="quiz-step" id="step2">
+                    <h3 class="quiz-question">ما هو المجال الذي ترغب في التخصص به؟</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="web">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>تطوير الويب</h4>
+                            <p>بناء مواقع وتطبيقات الويب</p>
+                        </div>
+                        <div class="quiz-option" data-value="mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>تطوير التطبيقات</h4>
+                            <p>بناء تطبيقات الهواتف والأجهزة المحمولة</p>
+                        </div>
+                        <div class="quiz-option" data-value="ai">
+                            <i class="fas fa-brain"></i>
+                            <h4>الذكاء الاصطناعي</h4>
+                            <p>تعلم الآلة والذكاء الاصطناعي</p>
+                        </div>
+                        <div class="quiz-option" data-value="tools">
+                            <i class="fas fa-tools"></i>
+                            <h4>تطوير الأدوات</h4>
+                            <p>بناء أدوات وبرامج مساعدة</p>
+                        </div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="quiz-btn" id="prev2"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <span class="quiz-progress">السؤال 2 من 4</span>
+                        <button class="quiz-btn" id="next2">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="step3">
+                    <h3 class="quiz-question">ما هي أهدافك من التعلم؟</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="job">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>الحصول على وظيفة</h4>
+                            <p>أريد تطوير مهاراتي للحصول على وظيفة في المجال</p>
+                        </div>
+                        <div class="quiz-option" data-value="project">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>بناء مشروع خاص</h4>
+                            <p>أرغب في بناء مشروعي الخاص أو شركة ناشئة</p>
+                        </div>
+                        <div class="quiz-option" data-value="skills">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>تطوير المهارات</h4>
+                            <p>أرغب في تحسين مهاراتي الحالية وتعلم الجديد</p>
+                        </div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="quiz-btn" id="prev3"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <span class="quiz-progress">السؤال 3 من 4</span>
+                        <button class="quiz-btn" id="next3">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="step4">
+                    <h3 class="quiz-question">ما هو الوقت المتاح لديك للتعلم؟</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="full">
+                            <i class="fas fa-user-clock"></i>
+                            <h4>وقت كامل</h4>
+                            <p>أستطيع التفرغ للتعلم بشكل كامل</p>
+                        </div>
+                        <div class="quiz-option" data-value="part">
+                            <i class="fas fa-business-time"></i>
+                            <h4>دوام جزئي</h4>
+                            <p>أستطيع التعلم لبضع ساعات يومياً</p>
+                        </div>
+                        <div class="quiz-option" data-value="weekends">
+                            <i class="fas fa-calendar-week"></i>
+                            <h4>عطلات نهاية الأسبوع</h4>
+                            <p>أستطيع التعلم فقط في عطلات نهاية الأسبوع</p>
+                        </div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="quiz-btn" id="prev4"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <span class="quiz-progress">السؤال 4 من 4</span>
+                        <button class="quiz-btn" id="finish">النتائج <i class="fas fa-flag-checkered"></i></button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="results">
+                    <div class="quiz-results">
+                        <h3>مسارك التعليمي الموصى به</h3>
+                        <p>بناءً على إجاباتك، نوصي بالمسار التالي:</p>
+                        
+                        <div class="recommended-course">
+                            <h4>مسار تطوير الويب المتكامل</h4>
+                            <p>هذا المسار مصمم خصيصاً للمبتدئين الذين يرغبون في احتراف تطوير الويب</p>
+                            <div class="course-features">
+                                <li><i class="fas fa-check"></i> دورة أساسيات البرمجة</li>
+                                <li><i class="fas fa-check"></i> دورة تطوير الويب الشاملة</li>
+                                <li><i class="fas fa-check"></i> دورة تطوير تطبيقات الويب المتقدمة</li>
+                                <li><i class="fas fa-check"></i> دورة قواعد البيانات للويب</li>
+                            </div>
+                            <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">ابدأ المسار الآن</a>
+                        </div>
+                        
+                        <button class="quiz-btn" id="restart">إعادة الاختبار <i class="fas fa-redo"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1332,7 +1853,6 @@
                         <li><a href="#courses"><i class="fas fa-book"></i> الدورات</a></li>
                         <li><a href="#goal-map"><i class="fas fa-map-marked-alt"></i> خريطة الأهداف</a></li>
                         <li><a href="#about"><i class="fas fa-info-circle"></i> من نحن</a></li>
-                        <li><a href="#faq"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
                 
@@ -1351,9 +1871,9 @@
                 <div class="footer-col">
                     <h4>روابط مهمة</h4>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a></li>
+                        <li><a href="#" id="showPrivacy"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a></li>
                         <li><a href="#"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
-                        <li><a href="#goal-map"><i class="fas fa-road"></i> خريطة الأهداف</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a></li>
                         <li><a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-user"></i> الموقع الشخصي للمطور</a></li>
                     </ul>
                 </div>
@@ -1362,9 +1882,9 @@
                     <h4>تواصل معنا</h4>
                     <ul class="footer-links">
                         <li><a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i> بوت التيليجرام</a></li>
-                        <li><a href="#contact"><i class="fas fa-envelope"></i> نموذج التواصل</a></li>
                         <li><a href="mailto:info@startyourpath.com"><i class="fas fa-at"></i> البريد الإلكتروني</a></li>
                         <li><a href="#"><i class="fab fa-whatsapp"></i> واتساب الدعم</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> تويتر</a></li>
                     </ul>
                 </div>
             </div>
@@ -1377,14 +1897,145 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
+        // Privacy Modal
+        const privacyModal = document.getElementById('privacyModal');
+        const closePrivacy = document.getElementById('closePrivacy');
+        const acceptPrivacy = document.getElementById('acceptPrivacy');
+        const showPrivacy = document.getElementById('showPrivacy');
+        const showPrivacyMobile = document.getElementById('showPrivacyMobile');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            mobileMenuBtn.innerHTML = navMenu.style.display === 'flex' ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        // Show privacy modal on first visit
+        if (!localStorage.getItem('privacyAccepted')) {
+            setTimeout(() => {
+                privacyModal.classList.add('active');
+            }, 2000);
+        }
+        
+        // Close privacy modal
+        closePrivacy.addEventListener('click', () => {
+            privacyModal.classList.remove('active');
+        });
+        
+        // Accept privacy policy
+        acceptPrivacy.addEventListener('click', () => {
+            localStorage.setItem('privacyAccepted', 'true');
+            privacyModal.classList.remove('active');
+        });
+        
+        // Show privacy policy from link
+        showPrivacy.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('active');
+        });
+        
+        showPrivacyMobile.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('active');
+            closeMobileMenu();
+        });
+        
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        openMenu.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Goal Map Quiz
+        const quizSteps = document.querySelectorAll('.quiz-step');
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const nextButtons = {
+            'next1': document.getElementById('next1'),
+            'next2': document.getElementById('next2'),
+            'next3': document.getElementById('next3')
+        };
+        const prevButtons = {
+            'prev2': document.getElementById('prev2'),
+            'prev3': document.getElementById('prev3'),
+            'prev4': document.getElementById('prev4')
+        };
+        const finishButton = document.getElementById('finish');
+        const restartButton = document.getElementById('restart');
+        
+        let currentStep = 1;
+        const answers = {};
+        
+        // Initialize quiz
+        function showStep(stepNumber) {
+            quizSteps.forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            currentStep = stepNumber;
+        }
+        
+        // Option selection
+        quizOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selection from siblings
+                const siblings = this.parentElement.children;
+                for (let sibling of siblings) {
+                    sibling.classList.remove('selected');
+                }
+                
+                // Select this option
+                this.classList.add('selected');
+                
+                // Store answer
+                const question = this.closest('.quiz-step').id.replace('step', '');
+                answers[question] = this.getAttribute('data-value');
+            });
+        });
+        
+        // Next buttons
+        Object.keys(nextButtons).forEach(key => {
+            nextButtons[key].addEventListener('click', function() {
+                if (answers[`step${currentStep}`]) {
+                    showStep(currentStep + 1);
+                } else {
+                    alert('يرجى اختيار إجابة قبل المتابعة');
+                }
+            });
+        });
+        
+        // Previous buttons
+        Object.keys(prevButtons).forEach(key => {
+            const step = parseInt(key.replace('prev', ''));
+            prevButtons[key].addEventListener('click', function() {
+                showStep(step - 1);
+            });
+        });
+        
+        // Finish button
+        finishButton.addEventListener('click', function() {
+            if (answers[`step${currentStep}`]) {
+                showStep(5); // Show results
+            } else {
+                alert('يرجى اختيار إجابة قبل المتابعة');
+            }
+        });
+        
+        // Restart button
+        restartButton.addEventListener('click', function() {
+            // Clear selections
+            quizOptions.forEach(option => option.classList.remove('selected'));
+            // Reset answers
+            for (let key in answers) delete answers[key];
+            // Go to first step
+            showStep(1);
         });
         
         // Smooth scrolling for anchor links
@@ -1399,11 +2050,7 @@
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
-                    if (navMenu.style.display === 'flex') {
-                        navMenu.style.display = 'none';
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
+                    closeMobileMenu();
                 }
             });
         });
@@ -1411,7 +2058,7 @@
         // Add active class to navigation links based on scroll position
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
+            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
             
             let current = '';
             
@@ -1429,20 +2076,6 @@
                 if (link.getAttribute('href').substring(1) === current) {
                     link.classList.add('active');
                 }
-            });
-        });
-        
-        // Course card hover effect
-        const courseCards = document.querySelectorAll('.course-card');
-        courseCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-15px)';
-                card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.1)';
             });
         });
     </script>

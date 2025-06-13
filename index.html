@@ -6,6 +6,7 @@
     <title>ابدأ طريقك - منصة التعلم البرمجي الاحترافية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #2563eb;
@@ -38,6 +39,7 @@
             background-color: #f9fafb;
             color: var(--dark);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
         
         .container {
@@ -55,6 +57,12 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -74,12 +82,22 @@
             height: 50px;
             border-radius: 50%;
             border: 2px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        header.scrolled .logo img {
+            height: 40px;
         }
         
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        header.scrolled .logo h1 {
+            font-size: 1.5rem;
         }
         
         nav ul {
@@ -133,11 +151,26 @@
             background-position: center;
             padding: 6rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            z-index: 0;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .hero h2 {
@@ -146,16 +179,30 @@
             font-weight: 800;
             line-height: 1.2;
             color: var(--dark);
+            animation: fadeInDown 1s ease;
         }
         
         .hero h2 span {
             color: var(--primary);
+            position: relative;
+        }
+        
+        .hero h2 span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(37, 99, 235, 0.2);
+            z-index: -1;
         }
         
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
             color: var(--gray);
+            animation: fadeInUp 1s ease;
         }
         
         .cta-button {
@@ -170,12 +217,39 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
             border: 2px solid transparent;
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-dark);
+            transition: var(--transition);
+            z-index: -1;
         }
         
         .cta-button:hover {
-            background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
         
         /* Courses Section */
@@ -195,6 +269,7 @@
             position: relative;
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
+            display: inline-block;
         }
         
         .section-title h2::after {
@@ -232,12 +307,26 @@
             flex-direction: column;
             height: 100%;
             border: 1px solid var(--border);
+            position: relative;
         }
         
         .course-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary-light);
+        }
+        
+        .course-card .course-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 2;
         }
         
         .course-icon {
@@ -249,6 +338,24 @@
             color: var(--primary);
             font-size: 3.5rem;
             border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            z-index: 0;
+        }
+        
+        .course-icon i {
+            position: relative;
+            z-index: 1;
         }
         
         .course-content {
@@ -272,6 +379,20 @@
             line-height: 1.7;
         }
         
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .course-meta div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
         .course-btn {
             align-self: flex-start;
             background-color: var(--primary);
@@ -286,10 +407,27 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .course-btn:hover {
-            background-color: var(--primary-dark);
+        .course-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .course-btn:hover::before {
+            width: 100%;
+            left: 0;
+            right: auto;
         }
         
         /* About Section */
@@ -316,6 +454,46 @@
             font-size: 1.1rem;
         }
         
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--light-gray);
+            border-radius: var(--rounded-sm);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .feature-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+        
         .developer-card {
             flex: 0 0 300px;
             background: var(--light);
@@ -324,6 +502,12 @@
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        
+        .developer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .developer-card img {
@@ -356,10 +540,18 @@
             color: var(--primary);
             font-size: 1.3rem;
             transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
         }
         
         .social-links a:hover {
-            color: var(--primary-dark);
+            color: white;
+            background: var(--primary);
             transform: translateY(-3px);
         }
         
@@ -370,11 +562,26 @@
             padding: 3rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .goal-map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            z-index: 0;
         }
         
         .goal-step {
             display: none;
             animation: fadeIn 0.5s ease;
+            position: relative;
+            z-index: 1;
         }
         
         .goal-step.active {
@@ -401,11 +608,30 @@
             padding: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .goal-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.1);
+            transition: var(--transition);
+            z-index: 0;
         }
         
         .goal-option:hover {
             border-color: var(--primary);
-            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        .goal-option:hover::before {
+            width: 100%;
+            left: 0;
+            right: auto;
         }
         
         .goal-option.selected {
@@ -418,11 +644,15 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--dark);
+            position: relative;
+            z-index: 1;
         }
         
         .goal-option p {
             color: var(--gray);
             font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
         }
         
         .goal-nav {
@@ -443,6 +673,27 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .nav-btn:hover::before {
+            width: 100%;
+            left: 0;
+            right: auto;
         }
         
         .nav-btn:disabled {
@@ -482,6 +733,19 @@
             padding: 2.5rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            z-index: 0;
         }
         
         .form-title {
@@ -489,10 +753,14 @@
             font-size: 1.8rem;
             margin-bottom: 2rem;
             color: var(--dark);
+            position: relative;
+            z-index: 1;
         }
         
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .form-group label {
@@ -509,6 +777,7 @@
             border-radius: var(--rounded-sm);
             font-size: 1rem;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
         }
         
         .form-control:focus {
@@ -534,10 +803,174 @@
             transition: var(--transition);
             display: block;
             margin: 2rem auto 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .submit-btn:hover {
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
             background: var(--primary-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .submit-btn:hover::before {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--light-gray);
+            padding: 5rem 0;
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: var(--light);
+            border-radius: var(--rounded);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+            position: relative;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 5rem;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-light);
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--light);
+            border-radius: var(--rounded-sm);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            color: var(--gray);
+            line-height: 1.8;
+            display: none;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
         }
         
         /* Footer */
@@ -601,6 +1034,39 @@
             font-size: 0.9rem;
         }
         
+        /* Newsletter */
+        .newsletter {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: var(--rounded-sm);
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: var(--rounded-sm);
+            margin-bottom: 0.8rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .newsletter button {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--rounded-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .newsletter button:hover {
+            background: var(--primary-dark);
+        }
+        
         /* Modal */
         .modal {
             display: none;
@@ -624,6 +1090,7 @@
             overflow: hidden;
             max-height: 90vh;
             overflow-y: auto;
+            position: relative;
         }
         
         .modal-header {
@@ -685,12 +1152,18 @@
         
         .accept-container {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 1rem;
             margin-top: 2rem;
             padding: 1rem;
             background: var(--light-gray);
             border-radius: var(--rounded-sm);
+        }
+        
+        .terms-agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
         
         .accept-btn {
@@ -702,10 +1175,32 @@
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition);
+            align-self: flex-start;
         }
         
         .accept-btn:hover {
             background: var(--primary-dark);
+        }
+        
+        .reject-btn {
+            background: var(--error);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--rounded-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+        
+        .reject-btn:hover {
+            background: #dc2626;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 1rem;
         }
         
         /* Responsive Design */
@@ -720,6 +1215,10 @@
             
             .developer-card {
                 margin-top: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -759,6 +1258,10 @@
             .courses-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -781,9 +1284,27 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+            }
         }
         
         @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -806,6 +1327,8 @@
                     <li>المنصة غير مسؤولة عن أي أضرار ناتجة عن استخدام المعلومات المقدمة</li>
                     <li>يحق للمنصة تحديث أو تعديل الشروط في أي وقت</li>
                     <li>يجب أن تكون المعلومات المقدمة في نماذج التسجيل صحيحة وكاملة</li>
+                    <li>يجب احترام حقوق الملكية الفكرية لجميع المحتويات التعليمية</li>
+                    <li>يمنع استخدام المنصة لأي أغراض غير قانونية أو غير أخلاقية</li>
                 </ul>
                 
                 <h4>سياسة الخصوصية</h4>
@@ -816,19 +1339,26 @@
                     <li>نستخدم تقنيات الحماية المناسبة لحماية بياناتك</li>
                     <li>نحتفظ بالبيانات طالما كانت ضرورية لتقديم الخدمات</li>
                     <li>لديك الحق في الوصول إلى بياناتك وتعديلها أو حذفها</li>
+                    <li>نستخدم ملفات تعريف الارتباط لتحسين تجربة المستخدم</li>
+                    <li>نلتزم بمواكبة أحدث معايير حماية البيانات</li>
                 </ul>
                 
                 <div class="accept-container">
-                    <input type="checkbox" id="acceptTerms">
-                    <label for="acceptTerms">أقرأ وأوافق على شروط الاستخدام وسياسة الخصوصية</label>
-                    <button class="accept-btn" id="acceptTermsBtn">قبول والمتابعة</button>
+                    <div class="terms-agreement">
+                        <input type="checkbox" id="acceptTerms">
+                        <label for="acceptTerms">أقرأ وأوافق على شروط الاستخدام وسياسة الخصوصية</label>
+                    </div>
+                    <div class="buttons-container">
+                        <button class="accept-btn" id="acceptTermsBtn">قبول والمتابعة</button>
+                        <button class="reject-btn" id="rejectTermsBtn">رفض</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container header-container">
             <a href="#" class="logo">
                 <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="شعار ابدأ طريقك">
@@ -840,6 +1370,8 @@
                     <li><a href="#courses">الدورات</a></li>
                     <li><a href="#goal-map">خريطة الأهداف</a></li>
                     <li><a href="#about">من نحن</a></li>
+                    <li><a href="#stats">إحصائيات</a></li>
+                    <li><a href="#testimonials">آراء الطلاب</a></li>
                     <li><a href="#faq">الأسئلة الشائعة</a></li>
                     <li><a href="#contact">تواصل معنا</a></li>
                 </ul>
@@ -870,12 +1402,17 @@
             <div class="courses-grid">
                 <!-- Course 1 -->
                 <div class="course-card">
+                    <div class="course-badge">الأكثر طلباً</div>
                     <div class="course-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="course-content">
                         <h3>تطوير الويب الشامل</h3>
-                        <p>دورة شاملة تغطي جميع جوانب تطوير الويب من البداية حتى الاحتراف. ستتعلم HTML, CSS, JavaScript, React, Node.js وتقنيات حديثة أخرى لبناء تطبيقات ويب كاملة.</p>
+                        <p>دورة شاملة تغطي جميع جوانب تطوير الويب من البداية حتى الاحتراف. ستتعلم HTML, CSS, JavaScript, React, Node.js وتقنيات حديثة أخرى لبناء تطبيقات ويب كاملة. تتضمن الدورة مشاريع عملية ومتابعة مستمرة من المدربين.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 120 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> متقدم</div>
+                        </div>
                         <button class="course-btn" data-course="تطوير الويب">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
@@ -884,12 +1421,17 @@
                 
                 <!-- Course 2 -->
                 <div class="course-card">
+                    <div class="course-badge">جديد</div>
                     <div class="course-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="course-content">
                         <h3>تطوير التطبيقات</h3>
-                        <p>احترف تطوير تطبيقات الهواتف المحمولة لنظامي iOS و Android. الدورة تغطي React Native, Flutter, Kotlin و Swift لبناء تطبيقات احترافية قابلة للنشر على المتاجر.</p>
+                        <p>احترف تطوير تطبيقات الهواتف المحمولة لنظامي iOS و Android. الدورة تغطي React Native, Flutter, Kotlin و Swift لبناء تطبيقات احترافية قابلة للنشر على المتاجر. ستتعلم كيفية إنشاء تطبيقات تفاعلية مع واجهات مستخدم جذابة.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 90 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> متوسط</div>
+                        </div>
                         <button class="course-btn" data-course="تطوير التطبيقات">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
@@ -898,12 +1440,17 @@
                 
                 <!-- Course 3 -->
                 <div class="course-card">
+                    <div class="course-badge">مميز</div>
                     <div class="course-icon">
                         <i class="fas fa-tools"></i>
                     </div>
                     <div class="course-content">
                         <h3>تطوير الأدوات</h3>
-                        <p>تعلم كيفية تطوير الأدوات والبرامج المساعدة التي تحسن سير العمل البرمجي. تشمل الدورة تطوير إضافات المتصفح، برامج الأتمتة، أدوات سطر الأوامر.</p>
+                        <p>تعلم كيفية تطوير الأدوات والبرامج المساعدة التي تحسن سير العمل البرمجي. تشمل الدورة تطوير إضافات المتصفح، برامج الأتمتة، أدوات سطر الأوامر، ومكتبات مساعدة. ستتعلم كيفية بناء أدوات تزيد من إنتاجيتك وتوفر وقتك.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 60 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> متقدم</div>
+                        </div>
                         <button class="course-btn" data-course="تطوير الأدوات">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
@@ -912,12 +1459,17 @@
                 
                 <!-- Course 4 -->
                 <div class="course-card">
+                    <div class="course-badge">مطلوب</div>
                     <div class="course-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <div class="course-content">
                         <h3>أدوات الذكاء الاصطناعي</h3>
-                        <p>استكشف عالم الذكاء الاصطناعي وتعلم استخدام أهم الأدوات والمكتبات مثل TensorFlow, PyTorch. الدورة تشمل معالجة اللغة، الرؤية الحاسوبية، والتعلم العميق.</p>
+                        <p>استكشف عالم الذكاء الاصطناعي وتعلم استخدام أهم الأدوات والمكتبات مثل TensorFlow, PyTorch. الدورة تشمل معالجة اللغة، الرؤية الحاسوبية، والتعلم العميق. ستتعلم كيفية بناء نماذج ذكية وحل مشاكل معقدة باستخدام الذكاء الاصطناعي.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 100 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> متوسط</div>
+                        </div>
                         <button class="course-btn" data-course="أدوات الذكاء الاصطناعي">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
@@ -926,12 +1478,17 @@
                 
                 <!-- Course 5 -->
                 <div class="course-card">
+                    <div class="course-badge">أساسي</div>
                     <div class="course-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <div class="course-content">
                         <h3>تطوير البرمجيات</h3>
-                        <p>دورة متكاملة في هندسة البرمجيات وتطوير الأنظمة. تغطي مفاهيم هندسة البرمجيات، أنماط التصميم، قواعد البيانات، الخوارزميات وهياكل البيانات.</p>
+                        <p>دورة متكاملة في هندسة البرمجيات وتطوير الأنظمة. تغطي مفاهيم هندسة البرمجيات، أنماط التصميم، قواعد البيانات، الخوارزميات وهياكل البيانات. ستتعلم كيفية بناء أنظمة برمجية قوية وقابلة للصيانة والتطوير.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 110 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> مبتدئ</div>
+                        </div>
                         <button class="course-btn" data-course="تطوير البرمجيات">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
@@ -940,16 +1497,49 @@
                 
                 <!-- Course 6 -->
                 <div class="course-card">
+                    <div class="course-badge">عملي</div>
                     <div class="course-icon">
                         <i class="fab fa-telegram"></i>
                     </div>
                     <div class="course-content">
                         <h3>تطوير بوتات تلجرام</h3>
-                        <p>دورة متخصصة في تطوير بوتات تلجرام باستخدام Python و Node.js. ستتعلم إنشاء بوتات تفاعلية متقدمة، إدارة الحالات، التعامل مع قواعد البيانات.</p>
+                        <p>دورة متخصصة في تطوير بوتات تلجرام باستخدام Python و Node.js. ستتعلم إنشاء بوتات تفاعلية متقدمة، إدارة الحالات، التعامل مع قواعد البيانات، وإرسال الإشعارات. ستقوم ببناء بوتات حقيقية يمكن نشرها واستخدامها فوراً.</p>
+                        <div class="course-meta">
+                            <div><i class="far fa-clock"></i> 40 ساعة</div>
+                            <div><i class="fas fa-user-graduate"></i> مبتدئ</div>
+                        </div>
                         <button class="course-btn" data-course="تطوير بوتات تلجرام">
                             <i class="fas fa-user-plus"></i> التسجيل في الدورة
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number">7,500+</div>
+                    <div class="stat-label">طالب مسجل</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">دورة تدريبية</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">مدرب محترف</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">مشروع طلابي</div>
                 </div>
             </div>
         </div>
@@ -969,6 +1559,45 @@
                     <p>منصة "ابدأ طريقك" هي مبادرة تعليمية تهدف إلى تمكين الشباب العربي من دخول عالم البرمجة وتطوير البرمجيات بسهولة وبدون تكاليف. نؤمن بأن المعرفة يجب أن تكون متاحة للجميع، ونسعى إلى توفير محتوى عالي الجودة باللغة العربية.</p>
                     <p>تقدم المنصة دورات تدريبية متخصصة في مجالات البرمجة المختلفة عبر قنوات تلجرام، مما يسهل على المتعلمين الوصول إلى المحتوى في أي وقت ومن أي مكان. نركز على الجانب العملي والتطبيقي لضمان اكتساب المهارات الحقيقية التي يحتاجها سوق العمل.</p>
                     <p>تهدف المنصة إلى بناء مجتمع برمجي عربي قوي، حيث يمكن للمتعلمين تبادل الخبرات، العمل على مشاريع مشتركة، ومساعدة بعضهم البعض في رحلتهم التعليمية والمهنية.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>تعليم مجاني بالكامل</h4>
+                                <p>جميع دوراتنا مجانية بالكامل بدون أي تكاليف خفية</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>دعم فني متكامل</h4>
+                                <p>فريق دعم فني متاح للإجابة على استفساراتك طوال اليوم</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>مشاريع عملية</h4>
+                                <p>تطبيق عملي على مشاريع حقيقية خلال رحلة التعلم</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>شهادات معتمدة</h4>
+                                <p>شهادات إتمام معتمدة بعد إتمام كل دورة بنجاح</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="developer-card">
@@ -979,6 +1608,7 @@
                         <a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-globe"></i></a>
                         <a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="https://github.com/oomaretman" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/oomaretman" target="_blank"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -1103,6 +1733,106 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء طلابنا</h2>
+                <p>تجارب حقيقية من طلاب منصتنا</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        دورة تطوير الويب غيرت مساري المهني تماماً. بعد إكمال الدورة، تمكنت من الحصول على وظيفة كمطور ويب في شركة تقنية رائدة. المحتوى غني ومفصل، والمدربون متاحون دائماً للإجابة على الأسئلة.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="محمد أحمد">
+                        <div class="author-info">
+                            <h4>محمد أحمد</h4>
+                            <p>مطور ويب في شركة تقنية</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        تعلمت تطوير تطبيقات الهواتف من خلال هذه المنصة، وبدأت العمل كمستقل خلال 3 أشهر فقط. المنظمة ممتازة، والدروس عملية وتركز على الجانب التطبيقي. أنصح أي شخص يريد تعلم البرمجة بالبدء مع "ابدأ طريقك".
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="سارة عبدالله">
+                        <div class="author-info">
+                            <h4>سارة عبدالله</h4>
+                            <p>مطورة تطبيقات مستقلة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على أكثر الأسئلة شيوعاً</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل الدورات مجانية بالكامل؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، جميع دوراتنا مجانية بالكامل بدون أي تكاليف خفية. نؤمن بأن التعليم يجب أن يكون متاحاً للجميع، ونسعى لتقديم محتوى عالي الجودة بدون أي رسوم.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف يمكنني التسجيل في الدورات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يمكنك التسجيل في أي دورة عن طريق الضغط على زر "التسجيل في الدورة" في بطاقة الدورة المطلوبة. سيتم توجيهك إلى نموذج التسجيل الذي يجب تعبئته. بعد التسجيل، ستتلقى رابط الانضمام إلى قناة التلجرام الخاصة بالدورة.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل أحصل على شهادة بعد إكمال الدورة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، بعد إكمال الدورة بنجاح وإتمام جميع المشاريع والاختبارات المطلوبة، ستتلقى شهادة إتمام معتمدة من منصة "ابدأ طريقك" يمكنك إضافتها إلى سيرتك الذاتية ومشاركتها على لينكدإن.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هو الوقت المطلوب يومياً لمتابعة الدورات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نوصي بقضاء ساعة إلى ساعتين يومياً لمتابعة الدروس وإنجاز المهام. لكن يمكنك تنظيم وقتك حسب ظروفك، حيث أن المحتوى متاح دائماً على قنوات التلجرام ويمكنك الرجوع إليه في أي وقت.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل تقدمون دعم فني أثناء الدورات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، لدينا فريق دعم فني متاح للإجابة على استفساراتك من خلال قنوات التلجرام. كما يوجد مجتمع نشط من الطلاب يمكنك طرح الأسئلة والاستفادة من تجارب الآخرين.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Course Registration Form -->
     <section class="section" id="course-register" style="display: none;">
         <div class="container">
@@ -1121,12 +1851,17 @@
                     
                     <div class="form-group">
                         <label for="telegram">اسم مستخدم تلجرام</label>
-                        <input type="text" id="telegram" class="form-control" required>
+                        <input type="text" id="telegram" class="form-control" required placeholder="@username">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">البريد الإلكتروني</label>
                         <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">الدولة</label>
+                        <input type="text" id="country" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
@@ -1137,6 +1872,11 @@
                             <option value="intermediate">متوسط (بعض الخبرة)</option>
                             <option value="advanced">متقدم (خبرة جيدة)</option>
                         </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="background">الخبرة السابقة (إن وجدت)</label>
+                        <textarea id="background" class="form-control"></textarea>
                     </div>
                     
                     <input type="hidden" id="courseName" value="">
@@ -1174,6 +1914,7 @@
                             <option value="support">الدعم الفني</option>
                             <option value="course">استفسار عن دورة</option>
                             <option value="partnership">شراكة وتعاون</option>
+                            <option value="feedback">ملاحظات ومقترحات</option>
                             <option value="other">موضوع آخر</option>
                         </select>
                     </div>
@@ -1200,6 +1941,8 @@
                         <li><a href="#about">عن المنصة</a></li>
                         <li><a href="#courses">الدورات التدريبية</a></li>
                         <li><a href="#goal-map">خريطة الأهداف</a></li>
+                        <li><a href="#testimonials">آراء الطلاب</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -1213,6 +1956,8 @@
                         <li><a href="#" data-course="ai">أدوات الذكاء الاصطناعي</a></li>
                         <li><a href="#" data-course="software">تطوير البرمجيات</a></li>
                         <li><a href="#" data-course="bots">تطوير بوتات تيليجرام</a></li>
+                        <li><a href="#">قواعد البيانات</a></li>
+                        <li><a href="#">أمن المعلومات</a></li>
                     </ul>
                 </div>
                 
@@ -1221,9 +1966,11 @@
                     <ul class="footer-links">
                         <li><a href="#" id="privacyLink">سياسة الخصوصية</a></li>
                         <li><a href="#" id="termsLink">شروط الاستخدام</a></li>
-                        <li><a href="#faq">الأسئلة الشائعة</a></li>
                         <li><a href="#">المدونة</a></li>
                         <li><a href="#">مشاريع المتعلمين</a></li>
+                        <li><a href="#">الوظائف الشاغرة</a></li>
+                        <li><a href="#">الشركاء</a></li>
+                        <li><a href="#">مركز المساعدة</a></li>
                     </ul>
                 </div>
                 
@@ -1233,7 +1980,16 @@
                         <li><a href="mailto:info@startyourpath.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
                         <li><a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i> بوت التيليجرام</a></li>
                         <li><a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-globe"></i> موقع المطور</a></li>
+                        <li><a href="https://github.com/oomaretman" target="_blank"><i class="fab fa-github"></i> جيت هب</a></li>
+                        <li><a href="https://twitter.com/oomaretman" target="_blank"><i class="fab fa-twitter"></i> تويتر</a></li>
                     </ul>
+                    
+                    <div class="newsletter">
+                        <h4>النشرة البريدية</h4>
+                        <p>اشترك ليصلك كل جديد</p>
+                        <input type="email" placeholder="بريدك الإلكتروني">
+                        <button type="button">اشتراك</button>
+                    </div>
                 </div>
             </div>
             
@@ -1249,6 +2005,16 @@
             if (!localStorage.getItem('termsAccepted')) {
                 document.getElementById('termsModal').style.display = 'flex';
             }
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
             
             // Mobile menu toggle
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1289,6 +2055,11 @@
                 } else {
                     alert('يرجى الموافقة على الشروط والأحكام أولاً');
                 }
+            });
+            
+            // Reject terms button
+            document.getElementById('rejectTermsBtn').addEventListener('click', function() {
+                alert('عذراً، لا يمكنك استخدام المنصة بدون الموافقة على شروط الاستخدام وسياسة الخصوصية.');
             });
             
             // Close modal buttons
@@ -1435,15 +2206,48 @@
             // Form submissions
             document.getElementById('courseForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('تم تسجيلك في الدورة بنجاح! سيتم التواصل معك عبر البريد الإلكتروني بمزيد من التفاصيل.');
-                this.reset();
-                window.location.href = '#courses';
+                
+                // Send to Telegram bot
+                const botToken = 'YOUR_BOT_TOKEN';
+                const chatId = 'YOUR_CHAT_ID';
+                const message = `طلب تسجيل جديد في الدورة:
+الدورة: ${document.getElementById('courseName').value}
+الاسم: ${document.getElementById('fullname').value}
+الهاتف: ${document.getElementById('phone').value}
+تيليجرام: ${document.getElementById('telegram').value}
+البريد: ${document.getElementById('email').value}
+الدولة: ${document.getElementById('country').value}
+المستوى: ${document.getElementById('experience').value}
+الخبرة: ${document.getElementById('background').value}`;
+                
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('تم تسجيلك في الدورة بنجاح! سيتم التواصل معك عبر البريد الإلكتروني بمزيد من التفاصيل.');
+                        this.reset();
+                        window.location.href = '#courses';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.');
+                    });
             });
             
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
                 this.reset();
+            });
+            
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('show');
+                });
             });
             
             // Footer links

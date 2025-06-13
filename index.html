@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ابدأ طريقك - منصة التعلم البرمجي الاحترافية</title>
+    <title>ابدأ طريقك - النسخة الأسطورية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0ea5e9;
-            --accent: #8b5cf6;
-            --accent-light: #c4b5fd;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #4cc9f0;
+            --accent: #f72585;
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--primary));
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
             --rounded: 20px;
             --rounded-sm: 12px;
-            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-            --gradient-light: linear-gradient(135deg, var(--accent-light), var(--secondary));
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
         }
         
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f0f5ff;
-            background-image: radial-gradient(#c4b5fd 0.8px, transparent 0.8px), radial-gradient(#c4b5fd 0.8px, #f0f5ff 0.8px);
-            background-size: 32px 32px;
-            background-position: 0 0, 16px 16px;
-            color: var(--dark);
-            line-height: 1.8;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--light);
             overflow-x: hidden;
+            line-height: 1.8;
+        }
+        
+        /* Particles background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
         
         .container {
@@ -56,15 +60,15 @@
         
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
-            color: var(--dark);
+            color: white;
             padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .header-container {
@@ -77,25 +81,18 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            text-decoration: none;
+            transition: var(--transition);
         }
         
-        .logo-image {
-            width: 60px;
+        .logo:hover {
+            transform: translateY(-3px);
+        }
+        
+        .logo img {
             height: 60px;
-            border-radius: 18px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-        
-        .logo-image img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 20px rgba(76, 201, 240, 0.5);
         }
         
         .logo-text {
@@ -104,18 +101,19 @@
         }
         
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(76, 201, 240, 0.3);
         }
         
-        .logo span {
+        .logo p {
             font-size: 0.9rem;
-            color: var(--gray);
-            font-weight: 500;
+            color: var(--secondary);
+            opacity: 0.8;
         }
         
         nav ul {
@@ -125,273 +123,247 @@
         }
         
         nav a {
-            color: var(--dark);
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             transition: var(--transition);
-            padding: 0.6rem 1rem;
+            padding: 0.7rem 0;
             position: relative;
-            border-radius: var(--rounded-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
         }
         
-        nav a:hover, nav a.active {
-            color: var(--primary);
-            background: rgba(37, 99, 235, 0.08);
+        nav a i {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a:hover i {
+            transform: translateX(-5px);
+            color: var(--accent);
         }
         
         nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
+            right: 0;
             width: 0;
             height: 3px;
-            background: var(--accent);
+            background: var(--gradient);
             transition: var(--transition);
             border-radius: 10px;
         }
         
-        nav a:hover::after, nav a.active::after {
-            width: 80%;
-        }
-        
-        .header-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.8rem;
-            border-radius: var(--rounded-sm);
-            font-weight: 700;
-            font-size: 1rem;
-            transition: var(--transition);
-            text-decoration: none;
-            gap: 0.7rem;
-            cursor: pointer;
-            border: none;
-            box-shadow: var(--shadow);
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(37, 99, 235, 0.1);
-            transform: translateY(-3px);
+        nav a:hover::after {
+            width: 100%;
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: var(--dark);
+            color: white;
             font-size: 1.8rem;
             cursor: pointer;
-            padding: 0.5rem;
+            z-index: 1001;
         }
         
         /* Hero Section */
         .hero {
-            padding: 8rem 0 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-container {
-            display: flex;
-            align-items: center;
-            gap: 5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
         .hero-content {
-            flex: 1;
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
             position: relative;
+            z-index: 10;
         }
         
-        .hero-image-main {
-            width: 100%;
-            max-width: 550px;
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow-lg);
-            transform: rotate(3deg);
-            border: 8px solid white;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--gradient-light);
-            border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%;
-            top: -30px;
-            left: 0;
-            opacity: 0.5;
-            filter: blur(60px);
-            z-index: 1;
-        }
-        
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: var(--accent-light);
-            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-            bottom: -20px;
-            right: 0;
-            opacity: 0.4;
-            filter: blur(60px);
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.8rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            position: relative;
-        }
-        
-        .hero h1 span {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            right: 0;
-            width: 280px;
-            height: 20px;
-            background: var(--accent-light);
-            opacity: 0.7;
-            z-index: 1;
-            border-radius: 10px;
+        .hero h2 {
+            font-size: 4.2rem;
+            margin-bottom: 1.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
         
         .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            color: #e2e8f0;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            color: var(--gray);
-            max-width: 600px;
-            line-height: 1.8;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            gap: 1rem;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.7s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(76, 201, 240, 0.1);
         }
         
         .hero-stats {
             display: flex;
+            justify-content: center;
             gap: 3rem;
-            margin-top: 3rem;
+            margin-top: 5rem;
+            flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2.5rem;
+            border-radius: var(--rounded);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
         }
         
-        .stat-value {
-            font-size: 2.5rem;
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(76, 201, 240, 0.1);
+            border-color: var(--secondary);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
         
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--gray);
-            font-weight: 600;
+        .stat-text {
+            font-size: 1.2rem;
+            color: var(--light-gray);
         }
         
         /* Courses Section */
         .section {
-            padding: 6rem 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: inline-block;
-            background: rgba(139, 92, 246, 0.1);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            padding: 8rem 0;
         }
         
         .section-title {
-            font-size: 2.8rem;
-            color: var(--dark);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
+            text-align: center;
+            margin-bottom: 5rem;
             position: relative;
-            display: inline-block;
         }
         
-        .section-title::after {
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            display: inline-block;
+            padding-bottom: 1.2rem;
+            position: relative;
+            background: linear-gradient(to right, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             right: 50%;
             transform: translateX(50%);
-            width: 100px;
-            height: 5px;
-            background: var(--accent);
-            border-radius: 5px;
+            width: 150px;
+            height: 6px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
         
-        .section-description {
-            font-size: 1.2rem;
-            color: var(--gray);
+        .section-title p {
             max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
+            margin: 1.5rem auto 0;
+            color: var(--light-gray);
+            font-size: 1.3rem;
+            line-height: 1.7;
         }
         
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2.5rem;
+            gap: 3rem;
+            margin-top: 3rem;
         }
         
         .course-card {
-            background: white;
+            background: rgba(15, 23, 42, 0.7);
             border-radius: var(--rounded);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -399,13 +371,15 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            border: 1px solid var(--light-gray);
+            border: 1px solid rgba(76, 201, 240, 0.2);
+            backdrop-filter: blur(10px);
             transform: translateY(0);
         }
         
         .course-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-20px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
         }
         
         .course-card::before {
@@ -415,52 +389,45 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            opacity: 0.05;
-            z-index: 1;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(247, 37, 133, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
         
-        .course-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        .course-card:hover::before {
+            opacity: 1;
+        }
+        
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 1.8rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .course-icon {
-            height: 200px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-        }
-        
-        .course-icon i {
-            font-size: 5rem;
-            color: var(--accent);
-            opacity: 0.9;
-            z-index: 2;
-        }
-        
-        .course-icon::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: var(--accent-light);
+            background: var(--gradient);
+            color: white;
+            font-size: 2.5rem;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
-            z-index: 1;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .course-level {
+            background: rgba(76, 201, 240, 0.15);
+            color: var(--secondary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
         
         .course-content {
@@ -468,14 +435,12 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            position: relative;
-            z-index: 2;
         }
         
         .course-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            color: var(--dark);
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            color: white;
             position: relative;
             padding-bottom: 0.8rem;
         }
@@ -485,100 +450,100 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
             border-radius: 2px;
         }
         
         .course-content p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
+            color: var(--light-gray);
+            margin-bottom: 2rem;
             flex-grow: 1;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.9;
         }
         
         .course-features {
-            margin: 1.2rem 0;
-            padding-right: 1rem;
-            list-style: none;
+            margin: 1.5rem 0;
+            padding-right: 1.2rem;
         }
         
         .course-features li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding-right: 1.8rem;
-            color: var(--gray);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            padding-right: 2rem;
+            color: var(--light-gray);
+            font-size: 1.1rem;
         }
         
-        .course-features li i {
-            color: var(--success);
-            font-size: 1.2rem;
-            min-width: 24px;
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
         }
         
         .course-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--light-gray);
+            padding: 1.5rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .course-duration {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--gray);
+            gap: 0.7rem;
+            color: var(--secondary);
         }
         
         .course-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
             background: var(--gradient);
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--rounded-sm);
-            text-decoration: none;
-            font-weight: 700;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
             transition: var(--transition);
-            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
         
         .course-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
         }
         
         /* Goal Map Section */
         .goal-map {
-            background: white;
-            border-radius: var(--rounded);
-            padding: 5rem 0;
             position: relative;
             overflow: hidden;
         }
         
-        .goal-map::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5cf6' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-        
         .map-container {
-            position: relative;
-            z-index: 2;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: var(--rounded);
+            padding: 4rem;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .map-steps {
@@ -590,49 +555,24 @@
         }
         
         .map-step {
-            background: white;
+            background: rgba(15, 23, 42, 0.8);
             border-radius: var(--rounded);
             padding: 2.5rem;
             width: calc(33.333% - 2.5rem);
-            min-width: 300px;
+            min-width: 320px;
             box-shadow: var(--shadow);
             border-top: 5px solid var(--accent);
             transition: var(--transition);
+            backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
+            z-index: 2;
         }
         
         .map-step:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
-        }
-        
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.3);
-        }
-        
-        .map-step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            color: var(--dark);
-        }
-        
-        .map-step p {
-            color: var(--gray);
-            line-height: 1.8;
-            font-size: 1.05rem;
+            border-color: var(--secondary);
         }
         
         .map-step::before {
@@ -642,134 +582,99 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            opacity: 0.03;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(247, 37, 133, 0.1));
             z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
         
-        .map-action {
+        .map-step:hover::before {
+            opacity: 1;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .map-step h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+        
+        .map-step p {
+            color: var(--light-gray);
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+        
+        .path-btn-container {
             text-align: center;
             margin-top: 4rem;
         }
         
         /* About Section */
-        .about-container {
-            display: flex;
-            gap: 5rem;
-            align-items: center;
-        }
-        
         .about-content {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            position: relative;
             display: flex;
-            justify-content: center;
+            align-items: center;
+            gap: 4rem;
         }
         
-        .about-image img {
-            width: 100%;
-            max-width: 500px;
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow-lg);
-            border: 8px solid white;
+        .about-text {
+            flex: 1;
         }
         
-        .about-image::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-            top: -50px;
-            left: -50px;
-        }
-        
-        .about-image::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: var(--primary);
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            z-index: -1;
-            bottom: -50px;
-            right: -50px;
-        }
-        
-        .about-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.8rem;
-            color: var(--dark);
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: white;
             position: relative;
-            padding-bottom: 0.8rem;
+            padding-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .about-title::after {
+        .about-text h2::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
             width: 100px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
+            height: 5px;
+            background: var(--gradient);
         }
         
-        .about-text {
-            color: var(--gray);
+        .about-text p {
+            margin-bottom: 1.8rem;
+            color: var(--light-gray);
             line-height: 1.9;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .about-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .about-features li {
-            margin-bottom: 1.2rem;
-            padding-right: 2.5rem;
-            position: relative;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .about-features li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 28px;
-            height: 28px;
-            background: var(--accent-light);
-            color: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
+            font-size: 1.2rem;
         }
         
         .developer-card {
-            background: white;
+            flex: 0 0 400px;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
             border-radius: var(--rounded);
             padding: 3rem;
             text-align: center;
             box-shadow: var(--shadow-lg);
-            margin-top: 3rem;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .developer-card::before {
@@ -779,90 +684,220 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            opacity: 0.03;
-            z-index: 1;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(247, 37, 133, 0.1));
+            z-index: -1;
         }
         
-        .developer-image {
+        .developer-card img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 4px solid var(--secondary);
+            margin: 0 auto 1.8rem;
+            box-shadow: 0 0 30px rgba(76, 201, 240, 0.5);
         }
         
         .developer-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 0.7rem;
+            color: white;
         }
         
         .developer-card p {
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-            position: relative;
-            z-index: 2;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-size: 1.2rem;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            position: relative;
-            z-index: 2;
+            gap: 1.5rem;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: white;
-            color: var(--accent);
-            font-size: 1.3rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(76, 201, 240, 0.15);
+            color: var(--secondary);
+            font-size: 1.5rem;
             transition: var(--transition);
             border-radius: 50%;
-            box-shadow: var(--shadow);
+            text-decoration: none;
         }
         
         .social-links a:hover {
-            background: var(--accent);
+            transform: translateY(-7px);
+            background: var(--gradient);
             color: white;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: var(--rounded);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .faq-item:hover {
+            border-color: var(--secondary);
+            transform: translateX(-10px);
+        }
+        
+        .faq-question {
+            padding: 2rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            transition: var(--transition);
+            color: white;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--secondary);
+        }
+        
+        .faq-item:hover .faq-question {
+            background: rgba(76, 201, 240, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 2rem 0;
+            color: var(--light-gray);
+            line-height: 1.9;
+            font-size: 1.15rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.7);
+            padding: 3.5rem;
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 201, 240, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: var(--rounded-sm);
+            background: rgba(255, 255, 255, 0.08);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(76, 201, 240, 0.1);
+            box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem auto 0;
+        }
+        
+        .submit-btn:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
+            background: rgba(15, 23, 42, 0.9);
             color: white;
             padding: 6rem 0 3rem;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 3rem;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 5rem;
         }
         
         .footer-col h4 {
-            font-size: 1.4rem;
-            margin-bottom: 1.8rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
-            padding-bottom: 0.8rem;
+            padding-bottom: 1rem;
+            color: white;
         }
         
         .footer-col h4::after {
@@ -870,9 +905,9 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
         }
         
         .footer-links {
@@ -889,349 +924,59 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
             font-size: 1.1rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
         }
         
         .footer-links a i {
-            color: var(--accent);
-            font-size: 1.1rem;
+            color: var(--secondary);
+            transition: var(--transition);
         }
         
-        .footer-bottom {
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+        
+        .footer-links a:hover i {
+            transform: translateX(-5px);
+            color: var(--accent);
+        }
+        
+        .copyright {
             text-align: center;
             padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--light-gray);
-            font-size: 1rem;
-            position: relative;
-            z-index: 2;
+            font-size: 1.1rem;
         }
         
-        .footer-bottom p {
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100vh;
-            background: white;
-            z-index: 2000;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            padding: 2rem;
-            overflow-y: auto;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .close-menu {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
-        .mobile-nav {
-            list-style: none;
-        }
-        
-        .mobile-nav li {
-            margin-bottom: 1.5rem;
-        }
-        
-        .mobile-nav a {
-            display: block;
-            padding: 0.8rem 1rem;
-            background: #f8fafc;
-            border-radius: var(--rounded-sm);
-            color: var(--dark);
+        .copyright a {
+            color: var(--secondary);
             text-decoration: none;
-            font-weight: 600;
             transition: var(--transition);
         }
         
-        .mobile-nav a:hover {
-            background: var(--accent-light);
+        .copyright a:hover {
             color: var(--accent);
+            text-decoration: underline;
         }
         
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1999;
-            display: none;
+        /* Floating Elements */
+        .floating {
+            animation: floating 8s ease-in-out infinite;
         }
         
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-        
-        /* Privacy Modal */
-        .privacy-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 3000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            display: none;
-        }
-        
-        .privacy-modal.active {
-            display: flex;
-        }
-        
-        .privacy-content {
-            background: white;
-            border-radius: var(--rounded);
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 3rem;
-            position: relative;
-        }
-        
-        .close-privacy {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--danger);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .privacy-content h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            text-align: center;
-        }
-        
-        .privacy-content h3 {
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem;
-            color: var(--dark);
-        }
-        
-        .privacy-content p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            color: var(--gray);
-        }
-        
-        .privacy-content ul {
-            padding-right: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .privacy-content li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-right: 1.2rem;
-        }
-        
-        .privacy-content li::before {
-            content: '•';
-            color: var(--accent);
-            font-size: 1.5rem;
-            position: absolute;
-            right: 0;
-            top: -0.3rem;
-        }
-        
-        .accept-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--light-gray);
-            text-align: center;
-        }
-        
-        .accept-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-        
-        .accept-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Goal Quiz */
-        .quiz-container {
-            background: white;
-            border-radius: var(--rounded);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .quiz-step {
-            display: none;
-        }
-        
-        .quiz-step.active {
-            display: block;
-        }
-        
-        .quiz-question {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-            text-align: center;
-        }
-        
-        .quiz-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .quiz-option {
-            background: #f8fafc;
-            border: 2px solid var(--light-gray);
-            border-radius: var(--rounded-sm);
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-        }
-        
-        .quiz-option:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-        
-        .quiz-option.selected {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--accent);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
-        }
-        
-        .quiz-option i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        .quiz-option h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .quiz-option p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        .quiz-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .quiz-progress {
-            font-size: 1.1rem;
-            color: var(--gray);
-        }
-        
-        .quiz-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .quiz-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .quiz-btn:disabled {
-            background: var(--gray);
-            cursor: not-allowed;
-        }
-        
-        .quiz-results {
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .quiz-results h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .recommended-course {
-            background: white;
-            border-radius: var(--rounded);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
         
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .hero-container, .about-container {
-                flex-direction: column;
-            }
-            
-            .hero-image, .about-image {
-                margin-top: 4rem;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .map-step {
@@ -1240,24 +985,52 @@
         }
         
         @media (max-width: 992px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .about-content {
+                flex-direction: column;
             }
             
+            .developer-card {
+                margin-top: 4rem;
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .hero h2 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
             nav ul {
                 display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100vh;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                padding: 6rem 2rem;
+                z-index: 1000;
+                gap: 2rem;
+            }
+            
+            nav ul.show {
+                display: flex;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 3rem;
+            .hero h2 {
+                font-size: 2.8rem;
             }
-        }
-        
-        @media (max-width: 768px) {
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+            
             .courses-grid {
                 grid-template-columns: 1fr;
             }
@@ -1265,176 +1038,93 @@
             .map-step {
                 width: 100%;
             }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.3rem;
-            }
         }
         
         @media (max-width: 576px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
+            .hero h2 {
+                font-size: 2.3rem;
             }
             
-            .header-buttons {
-                display: none;
+            .hero p {
+                font-size: 1.2rem;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero-buttons {
+                flex-direction: column;
             }
             
-            .hero h1::after {
-                width: 200px;
+            .section {
+                padding: 5rem 0;
             }
             
-            .privacy-content {
-                padding: 2rem 1.5rem;
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Privacy Modal -->
-    <div class="privacy-modal" id="privacyModal">
-        <div class="privacy-content">
-            <button class="close-privacy" id="closePrivacy">&times;</button>
-            <h2>سياسة الخصوصية والشروط والأحكام</h2>
-            
-            <h3>مقدمة</h3>
-            <p>نحن في منصة "ابدأ طريقك" ندرك أهمية خصوصية بياناتك الشخصية ونلتزم بحمايتها. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وحماية معلوماتك الشخصية عند استخدامك لمنصتنا.</p>
-            
-            <h3>المعلومات التي نجمعها</h3>
-            <p>قد نجمع أنواعاً مختلفة من المعلومات عند استخدامك لمنصتنا:</p>
-            <ul>
-                <li>المعلومات الشخصية: الاسم الكامل، البريد الإلكتروني، معلومات الاتصال التي تقدمها عند التسجيل في الدورات أو التواصل معنا.</li>
-                <li>معلومات الاستخدام: البيانات المتعلقة بكيفية استخدامك للمنصة، مثل الصفحات التي تزورها، الوقت الذي تقضيه، والإجراءات التي تقوم بها.</li>
-                <li>المعلومات التقنية: عنوان IP، نوع المتصفح، إعدادات اللغة، ونظام التشغيل الذي تستخدمه.</li>
-            </ul>
-            
-            <h3>كيف نستخدم معلوماتك</h3>
-            <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
-            <ul>
-                <li>تسجيلك في الدورات التدريبية التي تختارها</li>
-                <li>تحسين وتطوير تجربة المستخدم على المنصة</li>
-                <li>تزويدك بالمعلومات والتحديثات المتعلقة بالدورات</li>
-                <li>الرد على استفساراتك ورسائلك</li>
-                <li>تحليل استخدام المنصة لأغراض إحصائية وتحسين الخدمات</li>
-                <li>منع الاحتيال وحماية أمن المنصة</li>
-            </ul>
-            
-            <h3>الشروط والأحكام</h3>
-            <p>باستخدامك لمنصة "ابدأ طريقك" للتعلم البرمجي، فإنك توافق على الالتزام بهذه الشروط والأحكام:</p>
-            <ul>
-                <li>جميع المحتويات مقدمة مجاناً ولا يجوز استخدامها لأغراض تجارية</li>
-                <li>يحق للمنصة تحديث أو تعديل المحتوى في أي وقت دون إشعار مسبق</li>
-                <li>يجب أن تكون المعلومات المقدمة في نماذج التسجيل صحيحة وكاملة</li>
-                <li>يحق للمنصة إيقاف أو تعليق الحسابات المخالفة للشروط</li>
-                <li>المسؤولية عن الاستخدام الصحيح للمحتوى تقع على المستخدم</li>
-            </ul>
-            
-            <div class="accept-section">
-                <p>بالضغط على الزر أدناه، فإنك توافق على سياسة الخصوصية والشروط والأحكام المذكورة أعلاه</p>
-                <button class="accept-btn" id="acceptPrivacy">أوافق على الشروط</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
     
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="logo">
-                <div class="logo-image">
-                    <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="شعار ابدأ طريقك">
-                </div>
-                <div class="logo-text">
-                    <h1 style="font-size: 1.5rem;">ابدأ طريقك</h1>
-                </div>
-            </div>
-            <button class="close-menu" id="closeMenu">&times;</button>
-        </div>
-        
-        <ul class="mobile-nav">
-            <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#courses">الدورات</a></li>
-            <li><a href="#goal-map">خريطة الأهداف</a></li>
-            <li><a href="#about">من نحن</a></li>
-            <li><a href="#contact">تواصل معنا</a></li>
-            <li><a href="#" id="showPrivacyMobile">الخصوصية والشروط</a></li>
-        </ul>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-image">
-                    <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="شعار ابدأ طريقك">
-                </div>
+            <a href="#home" class="logo">
+                <img src="https://i.postimg.cc/C5sgw6T5/Picsart-25-06-07-10-18-36-116.jpg" alt="شعار ابدأ طريقك">
                 <div class="logo-text">
                     <h1>ابدأ طريقك</h1>
-                    <span>منصة التعلم البرمجي المجانية</span>
+                    <p>النسخة الأسطورية</p>
                 </div>
             </a>
-            
             <nav>
-                <ul>
-                    <li><a href="#home" class="active">الرئيسية</a></li>
-                    <li><a href="#courses">الدورات</a></li>
-                    <li><a href="#goal-map">خريطة الأهداف</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
+                <ul id="navMenu">
+                    <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#courses"><i class="fas fa-book"></i> الدورات</a></li>
+                    <li><a href="#goal-map"><i class="fas fa-map-marked-alt"></i> خريطة الأهداف</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
                 </ul>
-                <button class="mobile-menu-btn" id="openMenu">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
-            
-            <div class="header-buttons">
-                <a href="#courses" class="btn btn-outline">تصفح الدورات</a>
-                <a href="#contact" class="btn btn-primary">تواصل معنا</a>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1><span>ابدأ رحلتك البرمجية مع أفضل الدورات التدريبية</span></h1>
-                <p>منصة "ابدأ طريقك" توفر لك مسارات تعليمية احترافية في البرمجة وتطوير البرمجيات مجاناً، مقدمة عبر قنوات التلجرام المتخصصة. انضم إلى آلاف المتعلمين وابدأ طريقك نحو احتراف البرمجة اليوم!</p>
-                
-                <div class="hero-buttons">
-                    <a href="#courses" class="btn btn-primary">اكتشف دوراتنا <i class="fas fa-arrow-left"></i></a>
-                    <a href="#goal-map" class="btn btn-outline">خريطة الأهداف</a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">8+</div>
-                        <div class="stat-label">دورات متخصصة</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">7,500+</div>
-                        <div class="stat-label">متعلم نشط</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">100%</div>
-                        <div class="stat-label">مجانية بالكامل</div>
-                    </div>
-                </div>
+        <div class="container hero-content">
+            <h2 class="floating">ابدأ رحلتك البرمجية مع النسخة الأسطورية</h2>
+            <p>منصة "ابدأ طريقك" توفر لك تجربة تعليمية استثنائية في عالم البرمجة وتطوير البرمجيات. انضم إلى آلاف المتعلمين وابدأ طريقك نحو احتراف البرمجة اليوم مع النسخة المميزة!</p>
+            
+            <div class="hero-buttons">
+                <a href="#courses" class="cta-button">
+                    <i class="fas fa-play"></i> ابدأ التعلم الآن
+                </a>
+                <a href="#goal-map" class="cta-button secondary">
+                    <i class="fas fa-road"></i> اكتشف خريطة الأهداف
+                </a>
             </div>
             
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="متعلمي البرمجة" class="hero-image-main">
+            <div class="hero-stats">
+                <div class="stat-item floating">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-text">متعلم نشط</div>
+                </div>
+                <div class="stat-item floating" style="animation-delay: 0.5s;">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-text">ساعة تعليمية</div>
+                </div>
+                <div class="stat-item floating" style="animation-delay: 1s;">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-text">رضى المتعلمين</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1442,214 +1132,102 @@
     <!-- Courses Section -->
     <section class="section" id="courses">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">اكتشف مساراتك التعليمية</div>
-                <h2 class="section-title">الدورات المتاحة</h2>
-                <p class="section-description">اختر من بين مجموعة متنوعة من الدورات البرمجية المتخصصة والمقدمة بشكل مجاني بالكامل عبر قنوات التلجرام التعليمية</p>
+            <div class="section-title">
+                <h2>الدورات الأسطورية</h2>
+                <p>اختر من بين مجموعة دوراتنا المتميزة المصممة خصيصاً لتحويلك إلى محترف في عالم البرمجة</p>
             </div>
             
             <div class="courses-grid">
                 <!-- Course 1 -->
-                <div class="course-card">
-                    <div class="course-badge">الأكثر طلباً</div>
-                    <div class="course-icon">
-                        <i class="fas fa-laptop-code"></i>
+                <div class="course-card floating">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="course-level">متقدم</div>
                     </div>
                     <div class="course-content">
-                        <h3>دورة تطوير الويب الشاملة</h3>
-                        <p>دورة احترافية تغطي جميع جوانب تطوير الويب بدءاً من الأساسيات وحتى التقنيات المتقدمة. ستتعلم HTML5، CSS3، JavaScript الحديث، React.js، Node.js، قواعد البيانات، وأفضل ممارسات تطوير الويب.</p>
+                        <h3>تطوير الويب الشامل</h3>
+                        <p>احترف تطوير مواقع وتطبيقات الويب الحديثة باستخدام أحدث التقنيات مثل React, Vue, Node.js. ستتعلم كيفية بناء تطبيقات ويب متكاملة من الصفر حتى النشر على السيرفرات.</p>
                         
                         <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> بناء تطبيقات ويب تفاعلية متكاملة</li>
-                            <li><i class="fas fa-check-circle"></i> تصميم واجهات مستخدم جذابة وتفاعلية</li>
-                            <li><i class="fas fa-check-circle"></i> تطوير واجهات برمجة التطبيقات (API)</li>
-                            <li><i class="fas fa-check-circle"></i> نشر التطبيقات على سيرفرات حقيقية</li>
+                            <li>تصميم واجهات مستخدم تفاعلية</li>
+                            <li>تطوير واجهات برمجة التطبيقات (API)</li>
+                            <li>التكامل مع قواعد البيانات</li>
+                            <li>أفضل ممارسات الأمان والأداء</li>
+                            <li>نشر التطبيقات على السيرفرات</li>
                         </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 12 أسبوع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-duration">
+                            <i class="far fa-clock"></i>
+                            <span>12 أسبوعاً</span>
                         </div>
+                        <button class="course-btn">
+                            التسجيل <i class="fas fa-arrow-left"></i>
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Course 2 -->
-                <div class="course-card">
-                    <div class="course-badge">جديد</div>
-                    <div class="course-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="course-card floating" style="animation-delay: 0.3s;">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="course-level">متوسط</div>
                     </div>
                     <div class="course-content">
-                        <h3>دورة تطوير التطبيقات المتقدمة</h3>
-                        <p>احترف تطوير التطبيقات الهجينة والمحلية لنظامي iOS و Android باستخدام أحدث التقنيات. تغطي الدورة React Native، Flutter، Kotlin، Swift، إدارة الحالة، التخزين المحلي، والتكامل مع الخدمات السحابية.</p>
+                        <h3>تطوير التطبيقات الذكية</h3>
+                        <p>أنشئ تطبيقات هجينة ومحلية لنظامي iOS و Android باستخدام React Native و Flutter. تعلم كيفية بناء تطبيقات احترافية ونشرها على متاجر التطبيقات.</p>
                         
                         <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> بناء تطبيقات أصلية وهجينة عالية الأداء</li>
-                            <li><i class="fas fa-check-circle"></i> التكامل مع واجهات برمجة التطبيقات المختلفة</li>
-                            <li><i class="fas fa-check-circle"></i> استخدام أدوات التصحيح والاختبار</li>
-                            <li><i class="fas fa-check-circle"></i> نشر التطبيقات على متاجر التطبيقات</li>
+                            <li>تصميم واجهات تطبيقات جذابة</li>
+                            <li>إدارة الحالة والتخزين المحلي</li>
+                            <li>التكامل مع خدمات الجهاز</li>
+                            <li>اختبار التطبيقات وتحسين الأداء</li>
+                            <li>نشر التطبيقات على المتاجر</li>
                         </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 10 أسابيع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-duration">
+                            <i class="far fa-clock"></i>
+                            <span>10 أسابيع</span>
                         </div>
+                        <button class="course-btn">
+                            التسجيل <i class="fas fa-arrow-left"></i>
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Course 3 -->
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-code"></i>
+                <div class="course-card floating" style="animation-delay: 0.6s;">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="course-level">متقدم</div>
                     </div>
                     <div class="course-content">
-                        <h3>دورة هندسة البرمجيات الاحترافية</h3>
-                        <p>دورة متكاملة تغطي جميع جوانب هندسة البرمجيات وتطوير الأنظمة المعقدة. تشمل مفاهيم هندسة البرمجيات، أنماط التصميم، هياكل البيانات، الخوارزميات، البرمجة الكائنية، وقواعد البيانات المتقدمة.</p>
+                        <h3>الذكاء الاصطناعي التطبيقي</h3>
+                        <p>استكشف عالم الذكاء الاصطناعي وتعلم كيفية بناء نماذج تعلم آلي وتعلم عميق باستخدام TensorFlow و PyTorch. تطبيقات عملية في معالجة اللغة والرؤية الحاسوبية.</p>
                         
                         <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> تصميم وتطوير أنظمة برمجية معقدة</li>
-                            <li><i class="fas fa-check-circle"></i> كتابة كود نظيف وقابل للصيانة</li>
-                            <li><i class="fas fa-check-circle"></i> اختبار البرمجيات وإدارة الأخطاء</li>
-                            <li><i class="fas fa-check-circle"></i> أفضل ممارسات إدارة المشاريع البرمجية</li>
+                            <li>مقدمة شاملة للتعلم الآلي</li>
+                            <li>الشبكات العصبية والتعلم العميق</li>
+                            <li>معالجة اللغة الطبيعية (NLP)</li>
+                            <li>الرؤية الحاسوبية ومعالجة الصور</li>
+                            <li>نشر نماذج الذكاء الاصطناعي</li>
                         </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 14 أسبوع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-duration">
+                            <i class="far fa-clock"></i>
+                            <span>14 أسبوعاً</span>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Course 4 -->
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>دورة تطوير الأدوات والبرمجيات المساعدة</h3>
-                        <p>تعلم كيفية تطوير الأدوات والبرامج المساعدة التي تحسن سير العمل البرمجي وتزيد من إنتاجيتك. تشمل الدورة تطوير إضافات المتصفح، برامج الأتمتة، أدوات سطر الأوامر، وواجهات برمجية للتكامل.</p>
-                        
-                        <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> بناء أدوات مخصصة لتحسين سير العمل</li>
-                            <li><i class="fas fa-check-circle"></i> أتمتة المهام المتكررة</li>
-                            <li><i class="fas fa-check-circle"></i> تطوير إضافات للمتصفحات</li>
-                            <li><i class="fas fa-check-circle"></i> إنشاء واجهات سطر أوامر فعالة</li>
-                        </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 8 أسابيع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 5 -->
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>دورة أدوات الذكاء الاصطناعي التطبيقية</h3>
-                        <p>استكشف عالم الذكاء الاصطناعي وتعلم استخدام أهم الأدوات والمكتبات مثل TensorFlow، PyTorch، Scikit-learn. تشمل الدورة معالجة اللغة الطبيعية، الرؤية الحاسوبية، التعلم العميق، وتطبيقات الذكاء الاصطناعي العملية.</p>
-                        
-                        <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> بناء نماذج تعلم آلي وتعلم عميق</li>
-                            <li><i class="fas fa-check-circle"></i> معالجة اللغة الطبيعية (NLP)</li>
-                            <li><i class="fas fa-check-circle"></i> الرؤية الحاسوبية ومعالجة الصور</li>
-                            <li><i class="fas fa-check-circle"></i> تحليل البيانات الضخمة</li>
-                        </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 16 أسبوع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 6 -->
-                <div class="course-card">
-                    <div class="course-badge">مبتدئ</div>
-                    <div class="course-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>دورة تطوير بوتات تلجرام المتقدمة</h3>
-                        <p>دورة متخصصة في تطوير بوتات تلجرام باستخدام Python و Node.js. ستتعلم إنشاء بوتات تفاعلية متقدمة، إدارة الحالات، التعامل مع قواعد البيانات، التكامل مع خدمات خارجية، ونشر البوتات على السيرفرات.</p>
-                        
-                        <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> بناء بوتات تلجرام متقدمة وذكية</li>
-                            <li><i class="fas fa-check-circle"></i> التعامل مع قواعد البيانات المختلفة</li>
-                            <li><i class="fas fa-check-circle"></i> إنشاء واجهات تفاعلية معقدة</li>
-                            <li><i class="fas fa-check-circle"></i> التكامل مع واجهات برمجة التطبيقات الخارجية</li>
-                        </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 6 أسابيع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 7 -->
-                <div class="course-card">
-                    <div class="course-badge">جديد</div>
-                    <div class="course-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>دورة إدارة قواعد البيانات المتقدمة</h3>
-                        <p>تعلم تصميم وإدارة قواعد البيانات العلائقية واللارابطية. تشمل الدورة SQL، MySQL، PostgreSQL، MongoDB، Redis، وتحسين أداء قواعد البيانات.</p>
-                        
-                        <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> تصميم قواعد البيانات العلائقية</li>
-                            <li><i class="fas fa-check-circle"></i> إدارة قواعد البيانات اللارابطية</li>
-                            <li><i class="fas fa-check-circle"></i> تحسين أداء قواعد البيانات</li>
-                            <li><i class="fas fa-check-circle"></i> تأمين قواعد البيانات والحماية</li>
-                        </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 9 أسابيع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 8 -->
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>دورة أمن المعلومات والاختراق الأخلاقي</h3>
-                        <p>احترف أمن المعلومات والاختراق الأخلاقي لتأمين الأنظمة والشبكات. تشمل الدورة أساسيات الأمن السيبراني، اختبار الاختراق، أدوات الأمن، وحماية التطبيقات.</p>
-                        
-                        <ul class="course-features">
-                            <li><i class="fas fa-check-circle"></i> أساسيات الأمن السيبراني</li>
-                            <li><i class="fas fa-check-circle"></i> اختبار الاختراق الأخلاقي</li>
-                            <li><i class="fas fa-check-circle"></i> أدوات أمن المعلومات</li>
-                            <li><i class="fas fa-check-circle"></i> حماية التطبيقات والشبكات</li>
-                        </ul>
-                        
-                        <div class="course-footer">
-                            <div class="course-duration">
-                                <i class="far fa-clock"></i> 10 أسابيع
-                            </div>
-                            <a href="#" class="course-btn">سجل الآن <i class="fas fa-arrow-left"></i></a>
-                        </div>
+                        <button class="course-btn">
+                            التسجيل <i class="fas fa-arrow-left"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1659,140 +1237,54 @@
     <!-- Goal Map Section -->
     <section class="section goal-map" id="goal-map">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">دليلك التعليمي</div>
-                <h2 class="section-title">خريطة الأهداف التعليمية</h2>
-                <p class="section-description">اختر مسارك التعليمي بناءً على أهدافك ومهاراتك الحالية، وابدأ رحلتك البرمجية بثقة</p>
+            <div class="section-title">
+                <h2>خريطة الأهداف التعليمية</h2>
+                <p>دليلك الشخصي لبناء مسارك التعليمي وتحقيق أهدافك البرمجية</p>
             </div>
             
-            <div class="quiz-container">
-                <div class="quiz-step active" id="step1">
-                    <h3 class="quiz-question">ما هو مستوى خبرتك الحالي في البرمجة؟</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="beginner">
-                            <i class="fas fa-seedling"></i>
-                            <h4>مبتدئ</h4>
-                            <p>لا أملك خبرة سابقة أو لدي معرفة بسيطة جداً</p>
-                        </div>
-                        <div class="quiz-option" data-value="intermediate">
-                            <i class="fas fa-tree"></i>
-                            <h4>متوسط</h4>
-                            <p>لدي معرفة بالأساسيات وقمت ببعض المشاريع البسيطة</p>
-                        </div>
-                        <div class="quiz-option" data-value="advanced">
-                            <i class="fas fa-mountain"></i>
-                            <h4>متقدم</h4>
-                            <p>لدي خبرة جيدة وأعمل على مشاريع متوسطة التعقيد</p>
-                        </div>
+            <div class="map-container floating">
+                <div class="map-steps">
+                    <div class="map-step">
+                        <div class="step-number">1</div>
+                        <h3>تقييم المهارات</h3>
+                        <p>ابدأ بتقييم مستوى مهاراتك الحالي في البرمجة من خلال اختبار تفاعلي مصمم خصيصاً لتحديد نقاط قوتك وضعفك.</p>
                     </div>
-                    <div class="quiz-navigation">
-                        <span class="quiz-progress">السؤال 1 من 4</span>
-                        <button class="quiz-btn" id="next1">التالي <i class="fas fa-arrow-left"></i></button>
+                    
+                    <div class="map-step" style="animation-delay: 0.2s;">
+                        <div class="step-number">2</div>
+                        <h3>اختيار التخصص</h3>
+                        <p>اختر مجال تخصصك من بين عدة مسارات مثل تطوير الويب، تطوير التطبيقات، علم البيانات، أو الأمن السيبراني.</p>
                     </div>
-                </div>
-                
-                <div class="quiz-step" id="step2">
-                    <h3 class="quiz-question">ما هو المجال الذي ترغب في التخصص به؟</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="web">
-                            <i class="fas fa-laptop-code"></i>
-                            <h4>تطوير الويب</h4>
-                            <p>بناء مواقع وتطبيقات الويب</p>
-                        </div>
-                        <div class="quiz-option" data-value="mobile">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h4>تطوير التطبيقات</h4>
-                            <p>بناء تطبيقات الهواتف والأجهزة المحمولة</p>
-                        </div>
-                        <div class="quiz-option" data-value="ai">
-                            <i class="fas fa-brain"></i>
-                            <h4>الذكاء الاصطناعي</h4>
-                            <p>تعلم الآلة والذكاء الاصطناعي</p>
-                        </div>
-                        <div class="quiz-option" data-value="tools">
-                            <i class="fas fa-tools"></i>
-                            <h4>تطوير الأدوات</h4>
-                            <p>بناء أدوات وبرامج مساعدة</p>
-                        </div>
+                    
+                    <div class="map-step" style="animation-delay: 0.4s;">
+                        <div class="step-number">3</div>
+                        <h3>بناء الخطة</h3>
+                        <p>بناءً على اختياراتك، سنقوم بإنشاء خطة تعليمية مخصصة تشمل الدورات والمشاريع والموارد المناسبة لك.</p>
                     </div>
-                    <div class="quiz-navigation">
-                        <button class="quiz-btn" id="prev2"><i class="fas fa-arrow-right"></i> السابق</button>
-                        <span class="quiz-progress">السؤال 2 من 4</span>
-                        <button class="quiz-btn" id="next2">التالي <i class="fas fa-arrow-left"></i></button>
+                    
+                    <div class="map-step" style="animation-delay: 0.6s;">
+                        <div class="step-number">4</div>
+                        <h3>بدء الرحلة</h3>
+                        <p>ابدأ رحلتك التعليمية من خلال الدورات الموصى بها، مع تتبع تقدمك والحصول على تغذية راجعة فورية.</p>
+                    </div>
+                    
+                    <div class="map-step" style="animation-delay: 0.8s;">
+                        <div class="step-number">5</div>
+                        <h3>بناء المشاريع</h3>
+                        <p>طبق ما تعلمته من خلال بناء مشاريع حقيقية ستمكنك من بناء محفظة أعمال قوية وجذابة لأصحاب العمل.</p>
+                    </div>
+                    
+                    <div class="map-step" style="animation-delay: 1s;">
+                        <div class="step-number">6</div>
+                        <h3>الوصول للهدف</h3>
+                        <p>بعد إكمال مسارك التعليمي، ستحصل على شهادة احترافية وتوجيه نحو فرص العمل والمسار الوظيفي المناسب.</p>
                     </div>
                 </div>
                 
-                <div class="quiz-step" id="step3">
-                    <h3 class="quiz-question">ما هي أهدافك من التعلم؟</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="job">
-                            <i class="fas fa-briefcase"></i>
-                            <h4>الحصول على وظيفة</h4>
-                            <p>أريد تطوير مهاراتي للحصول على وظيفة في المجال</p>
-                        </div>
-                        <div class="quiz-option" data-value="project">
-                            <i class="fas fa-lightbulb"></i>
-                            <h4>بناء مشروع خاص</h4>
-                            <p>أرغب في بناء مشروعي الخاص أو شركة ناشئة</p>
-                        </div>
-                        <div class="quiz-option" data-value="skills">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>تطوير المهارات</h4>
-                            <p>أرغب في تحسين مهاراتي الحالية وتعلم الجديد</p>
-                        </div>
-                    </div>
-                    <div class="quiz-navigation">
-                        <button class="quiz-btn" id="prev3"><i class="fas fa-arrow-right"></i> السابق</button>
-                        <span class="quiz-progress">السؤال 3 من 4</span>
-                        <button class="quiz-btn" id="next3">التالي <i class="fas fa-arrow-left"></i></button>
-                    </div>
-                </div>
-                
-                <div class="quiz-step" id="step4">
-                    <h3 class="quiz-question">ما هو الوقت المتاح لديك للتعلم؟</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="full">
-                            <i class="fas fa-user-clock"></i>
-                            <h4>وقت كامل</h4>
-                            <p>أستطيع التفرغ للتعلم بشكل كامل</p>
-                        </div>
-                        <div class="quiz-option" data-value="part">
-                            <i class="fas fa-business-time"></i>
-                            <h4>دوام جزئي</h4>
-                            <p>أستطيع التعلم لبضع ساعات يومياً</p>
-                        </div>
-                        <div class="quiz-option" data-value="weekends">
-                            <i class="fas fa-calendar-week"></i>
-                            <h4>عطلات نهاية الأسبوع</h4>
-                            <p>أستطيع التعلم فقط في عطلات نهاية الأسبوع</p>
-                        </div>
-                    </div>
-                    <div class="quiz-navigation">
-                        <button class="quiz-btn" id="prev4"><i class="fas fa-arrow-right"></i> السابق</button>
-                        <span class="quiz-progress">السؤال 4 من 4</span>
-                        <button class="quiz-btn" id="finish">النتائج <i class="fas fa-flag-checkered"></i></button>
-                    </div>
-                </div>
-                
-                <div class="quiz-step" id="results">
-                    <div class="quiz-results">
-                        <h3>مسارك التعليمي الموصى به</h3>
-                        <p>بناءً على إجاباتك، نوصي بالمسار التالي:</p>
-                        
-                        <div class="recommended-course">
-                            <h4>مسار تطوير الويب المتكامل</h4>
-                            <p>هذا المسار مصمم خصيصاً للمبتدئين الذين يرغبون في احتراف تطوير الويب</p>
-                            <div class="course-features">
-                                <li><i class="fas fa-check"></i> دورة أساسيات البرمجة</li>
-                                <li><i class="fas fa-check"></i> دورة تطوير الويب الشاملة</li>
-                                <li><i class="fas fa-check"></i> دورة تطوير تطبيقات الويب المتقدمة</li>
-                                <li><i class="fas fa-check"></i> دورة قواعد البيانات للويب</li>
-                            </div>
-                            <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">ابدأ المسار الآن</a>
-                        </div>
-                        
-                        <button class="quiz-btn" id="restart">إعادة الاختبار <i class="fas fa-redo"></i></button>
-                    </div>
+                <div class="path-btn-container">
+                    <button class="cta-button">
+                        <i class="fas fa-play"></i> ابدأ مسارك التعليمي الآن
+                    </button>
                 </div>
             </div>
         </div>
@@ -1801,49 +1293,159 @@
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">تعرف علينا</div>
-                <h2 class="section-title">من نحن</h2>
-                <p class="section-description">فريق متخصص يهدف إلى تمكين الشباب العربي من دخول عالم البرمجة وتطوير البرمجيات</p>
+            <div class="section-title">
+                <h2>من نحن</h2>
+                <p>قصة منصة "ابدأ طريقك" ورسالتنا لتمكين المبرمجين العرب</p>
             </div>
             
-            <div class="about-container">
-                <div class="about-content">
-                    <h3 class="about-title">فكرة "ابدأ طريقك" وأهدافها</h3>
-                    <p class="about-text">منصة "ابدأ طريقك" هي مبادرة تعليمية رائدة تهدف إلى تمكين الشباب العربي من دخول عالم البرمجة وتطوير البرمجيات بسهولة وبدون عوائق مالية. انطلقت الفكرة من الإيمان بأن المعرفة التقنية يجب أن تكون متاحة للجميع، ونسعى جاهدين لتوفير محتوى تعليمي عالي الجودة باللغة العربية يواكب أحدث التطورات التقنية.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>رؤيتنا ورسالتنا</h2>
+                    <p>منصة "ابدأ طريقك" هي ثمرة سنوات من الخبرة في مجال التعليم البرمجي، تأسست بهدف سد الفجوة بين التعليم الأكاديمي ومتطلبات سوق العمل في العالم العربي. نؤمن بأن كل شخص يستحق فرصة لتعلم المهارات البرمجية التي تمكنه من بناء مستقبل مشرق.</p>
+                    <p>نحن لا نقدم مجرد دورات تعليمية، بل نقدم تجربة تعليمية متكاملة تشمل التوجيه المهني، بناء المشاريع العملية، والتواصل مع مجتمع من المتعلمين والمحترفين. هدفنا هو تمكين جيل جديد من المبرمجين العرب القادرين على المنافسة عالمياً.</p>
+                    <p>باستخدام أحدث منهجيات التعليم وأكثرها فعالية، صممنا مسارات تعليمية تلبي احتياجات السوق الحالية والمستقبلية، مع التركيز على الجانب العملي والتطبيقي لضمان حصول المتعلمين على المهارات الحقيقية التي يحتاجونها.</p>
                     
-                    <p class="about-text">نقدم عبر المنصة مسارات تعليمية متكاملة في مجالات البرمجة المختلفة من خلال قنوات تلجرام المتخصصة، مما يمكن المتعلمين من الوصول إلى المحتوى في أي وقت ومن أي مكان. نركز بشكل كبير على الجانب العملي والتطبيقي، حيث أننا نؤمن بأن أفضل طريقة لتعلم البرمجة هي من خلال الممارسة وبناء المشاريع الحقيقية.</p>
-                    
-                    <ul class="about-features">
-                        <li>توفير تعليم برمجي مجاني عالي الجودة باللغة العربية</li>
-                        <li>سد الفجوة بين التعليم الأكاديمي ومتطلبات سوق العمل</li>
-                        <li>تمكين الشباب العربي من دخول مجال التكنولوجيا</li>
-                        <li>بناء مجتمع تقني عربي نشط ومتعاون</li>
-                        <li>المساهمة في التحول الرقمي في العالم العربي</li>
+                    <h3>قيمنا الأساسية</h3>
+                    <ul class="course-features">
+                        <li>الجودة والتميز في المحتوى التعليمي</li>
+                        <li>الابتكار والتطوير المستمر</li>
+                        <li>المجتمع والتعاون بين المتعلمين</li>
+                        <li>الشفافية والنزاهة</li>
+                        <li>التوجيه والإرشاد المهني</li>
                     </ul>
                 </div>
                 
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="فريق العمل">
-                </div>
-            </div>
-            
-            <div class="developer-card">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="عمر م. عتمان" class="developer-image">
-                <h3>عمر م. عتمان</h3>
-                <p>مطور ومؤسس المنصة</p>
-                <div class="social-links">
-                    <a href="https://omarmetman.vercel.app/" target="_blank" title="الموقع الشخصي"><i class="fas fa-globe"></i></a>
-                    <a href="https://t.me/OomaretmanBOT" target="_blank" title="بوت التيليجرام"><i class="fab fa-telegram"></i></a>
-                    <a href="https://github.com/oomaretman" target="_blank" title="جيت هب"><i class="fab fa-github"></i></a>
-                    <a href="mailto:info@startyourpath.com" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
+                <div class="developer-card floating">
+                    <img src="https://avatars.githubusercontent.com/u/55729253?v=4" alt="عمر م. عتمان">
+                    <h3>عمر م. عتمان</h3>
+                    <p>مؤسس المنصة والمطور الرئيسي</p>
+                    <div class="social-links">
+                        <a href="https://omarmetman.vercel.app/" target="_blank" title="الموقع الشخصي">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                        <a href="https://t.me/OomaretmanBOT" target="_blank" title="بوت التيليجرام">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://github.com/oomaretman" target="_blank" title="جيت هب">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:info@startyourpath.com" title="البريد الإلكتروني">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>أجوبة على أكثر الاستفسارات شيوعاً من مجتمعنا</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني الحصول على شهادة معتمدة بعد إكمال الدورة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            نعم، عند إكمالك أي دورة بنجاح وإتمامك جميع المشاريع والتكليفات المطلوبة، ستحصل على شهادة إلكترونية معتمدة من منصة "ابدأ طريقك". هذه الشهادة يمكنك مشاركتها في سيرتك الذاتية وملفاتك الشخصية على منصات التوظيف مثل LinkedIn. الشهادة تشهد بإتقانك للمهارات المطلوبة في الدورة وتعتبر دليلاً على اجتهادك والتزامك.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم ساعة في الأسبوع يجب أن أخصص للتعلم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            نوصي بتخصيص 6-10 ساعات أسبوعياً للحصول على أفضل النتائج. تم تصميم الدورات لتكون مرنة وتناسب مختلف الجداول الزمنية. يمكنك التعلم حسب وتيرتك الخاصة، حيث أن جميع المواد متاحة لك في أي وقت بعد التسجيل. إذا كنت تهدف إلى إكمال الدورة في وقت أقصر، يمكنك زيادة عدد الساعات الأسبوعية.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل توجد متطلبات مسبقة للتسجيل في الدورات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            تختلف المتطلبات المسبقة حسب مستوى الدورة. للدورات المبتدئة، لا توجد متطلبات مسبقة. أما للدورات المتوسطة والمتقدمة، نوصي بمعرفة أساسيات البرمجة. في صفحة كل دورة، نوضح بالتفصيل المتطلبات المسبقة والمهارات المطلوبة لبدء الدورة بنجاح. كما نقدم اختبارات تقييمية لمساعدتك على تحديد إذا كانت الدورة مناسبة لمستواك الحالي.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف يمكنني التواصل مع المدربين وزملائي في الدورة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            نوفر عدة قنوات للتواصل والتعاون:
+                            <ul class="course-features">
+                                <li>مجموعات نقاش خاصة بكل دورة على تلجرام</li>
+                                <li>جلسات أسئلة وأجوبة أسبوعية مباشرة مع المدربين</li>
+                                <li>منتديات النقاش داخل المنصة</li>
+                                <li>قنوات الدعم الفني المتاحة على مدار اليوم</li>
+                                <li>مجتمعات تعلم مصغرة لمشاريع التخرج</li>
+                            </ul>
+                            هذا النظام يتيح لك الحصول على الدعم الفوري وتبادل الخبرات مع زملائك في الدورة.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا للإجابة على جميع استفساراتك وتلقي ملاحظاتك</p>
+            </div>
+            
+            <div class="contact-form floating">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="fullname">الاسم الكامل</label>
+                        <input type="text" id="fullname" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactInfo">رقم الهاتف / اسم مستخدم تليجرام</label>
+                        <input type="text" id="contactInfo" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">رسالتك الخاصة</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -1853,6 +1455,7 @@
                         <li><a href="#courses"><i class="fas fa-book"></i> الدورات</a></li>
                         <li><a href="#goal-map"><i class="fas fa-map-marked-alt"></i> خريطة الأهداف</a></li>
                         <li><a href="#about"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                        <li><a href="#faq"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
                 
@@ -1861,20 +1464,19 @@
                     <ul class="footer-links">
                         <li><a href="#courses"><i class="fas fa-laptop-code"></i> تطوير الويب</a></li>
                         <li><a href="#courses"><i class="fas fa-mobile-alt"></i> تطوير التطبيقات</a></li>
-                        <li><a href="#courses"><i class="fas fa-code"></i> هندسة البرمجيات</a></li>
-                        <li><a href="#courses"><i class="fas fa-tools"></i> تطوير الأدوات</a></li>
                         <li><a href="#courses"><i class="fas fa-brain"></i> الذكاء الاصطناعي</a></li>
-                        <li><a href="#courses"><i class="fab fa-telegram"></i> بوتات تلجرام</a></li>
+                        <li><a href="#courses"><i class="fas fa-shield-alt"></i> الأمن السيبراني</a></li>
+                        <li><a href="#courses"><i class="fas fa-database"></i> علم البيانات</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>روابط مهمة</h4>
                     <ul class="footer-links">
-                        <li><a href="#" id="showPrivacy"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a></li>
                         <li><a href="#"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a></li>
-                        <li><a href="https://omarmetman.vercel.app/" target="_blank"><i class="fas fa-user"></i> الموقع الشخصي للمطور</a></li>
+                        <li><a href="#"><i class="fas fa-blog"></i> المدونة</a></li>
+                        <li><a href="#"><i class="fas fa-project-diagram"></i> مشاريع المتعلمين</a></li>
                     </ul>
                 </div>
                 
@@ -1882,160 +1484,68 @@
                     <h4>تواصل معنا</h4>
                     <ul class="footer-links">
                         <li><a href="https://t.me/OomaretmanBOT" target="_blank"><i class="fab fa-telegram"></i> بوت التيليجرام</a></li>
-                        <li><a href="mailto:info@startyourpath.com"><i class="fas fa-at"></i> البريد الإلكتروني</a></li>
+                        <li><a href="mailto:info@startyourpath.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
                         <li><a href="#"><i class="fab fa-whatsapp"></i> واتساب الدعم</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> تويتر</a></li>
+                        <li><a href="#"><i class="fab fa-discord"></i> مجتمع الديسكورد</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>جميع الحقوق محفوظة &copy; 2023 منصة "ابدأ طريقك" للتعلم البرمجي | تطوير: عمر م. عتمان</p>
-                <p>بوت التيليجرام: @OomaretmanBOT | الموقع الشخصي: <a href="https://omarmetman.vercel.app/" target="_blank" style="color: var(--accent-light);">omarmetman.vercel.app</a></p>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 منصة "ابدأ طريقك" للتعلم البرمجي | تصميم وتطوير: <a href="https://omarmetman.vercel.app/" target="_blank">عمر م. عتمان</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Privacy Modal
-        const privacyModal = document.getElementById('privacyModal');
-        const closePrivacy = document.getElementById('closePrivacy');
-        const acceptPrivacy = document.getElementById('acceptPrivacy');
-        const showPrivacy = document.getElementById('showPrivacy');
-        const showPrivacyMobile = document.getElementById('showPrivacyMobile');
-        
-        // Show privacy modal on first visit
-        if (!localStorage.getItem('privacyAccepted')) {
-            setTimeout(() => {
-                privacyModal.classList.add('active');
-            }, 2000);
-        }
-        
-        // Close privacy modal
-        closePrivacy.addEventListener('click', () => {
-            privacyModal.classList.remove('active');
-        });
-        
-        // Accept privacy policy
-        acceptPrivacy.addEventListener('click', () => {
-            localStorage.setItem('privacyAccepted', 'true');
-            privacyModal.classList.remove('active');
-        });
-        
-        // Show privacy policy from link
-        showPrivacy.addEventListener('click', (e) => {
-            e.preventDefault();
-            privacyModal.classList.add('active');
-        });
-        
-        showPrivacyMobile.addEventListener('click', (e) => {
-            e.preventDefault();
-            privacyModal.classList.add('active');
-            closeMobileMenu();
-        });
-        
-        // Mobile Menu
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const openMenu = document.getElementById('openMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        openMenu.addEventListener('click', openMobileMenu);
-        closeMenu.addEventListener('click', closeMobileMenu);
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-        
-        // Goal Map Quiz
-        const quizSteps = document.querySelectorAll('.quiz-step');
-        const quizOptions = document.querySelectorAll('.quiz-option');
-        const nextButtons = {
-            'next1': document.getElementById('next1'),
-            'next2': document.getElementById('next2'),
-            'next3': document.getElementById('next3')
-        };
-        const prevButtons = {
-            'prev2': document.getElementById('prev2'),
-            'prev3': document.getElementById('prev3'),
-            'prev4': document.getElementById('prev4')
-        };
-        const finishButton = document.getElementById('finish');
-        const restartButton = document.getElementById('restart');
-        
-        let currentStep = 1;
-        const answers = {};
-        
-        // Initialize quiz
-        function showStep(stepNumber) {
-            quizSteps.forEach(step => step.classList.remove('active'));
-            document.getElementById(`step${stepNumber}`).classList.add('active');
-            currentStep = stepNumber;
-        }
-        
-        // Option selection
-        quizOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selection from siblings
-                const siblings = this.parentElement.children;
-                for (let sibling of siblings) {
-                    sibling.classList.remove('selected');
+        // Initialize Particles.js
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#4cc9f0" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#4cc9f0",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
                 }
-                
-                // Select this option
-                this.classList.add('selected');
-                
-                // Store answer
-                const question = this.closest('.quiz-step').id.replace('step', '');
-                answers[question] = this.getAttribute('data-value');
-            });
-        });
-        
-        // Next buttons
-        Object.keys(nextButtons).forEach(key => {
-            nextButtons[key].addEventListener('click', function() {
-                if (answers[`step${currentStep}`]) {
-                    showStep(currentStep + 1);
-                } else {
-                    alert('يرجى اختيار إجابة قبل المتابعة');
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.8 } },
+                    push: { particles_nb: 4 }
                 }
-            });
+            },
+            retina_detect: true
         });
         
-        // Previous buttons
-        Object.keys(prevButtons).forEach(key => {
-            const step = parseInt(key.replace('prev', ''));
-            prevButtons[key].addEventListener('click', function() {
-                showStep(step - 1);
-            });
-        });
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
         
-        // Finish button
-        finishButton.addEventListener('click', function() {
-            if (answers[`step${currentStep}`]) {
-                showStep(5); // Show results
-            } else {
-                alert('يرجى اختيار إجابة قبل المتابعة');
-            }
-        });
-        
-        // Restart button
-        restartButton.addEventListener('click', function() {
-            // Clear selections
-            quizOptions.forEach(option => option.classList.remove('selected'));
-            // Reset answers
-            for (let key in answers) delete answers[key];
-            // Go to first step
-            showStep(1);
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
         // Smooth scrolling for anchor links
@@ -2050,34 +1560,80 @@
                         behavior: 'smooth'
                     });
                     
-                    closeMobileMenu();
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('show')) {
+                        navMenu.classList.remove('show');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
                 }
             });
         });
         
-        // Add active class to navigation links based on scroll position
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
             });
         });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('fullname').value;
+            const contact = document.getElementById('contactInfo').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message
+            alert(`شكراً ${name} على رسالتك! سنقوم بالرد عليك في أقرب وقت ممكن.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Course button functionality
+        document.querySelectorAll('.course-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const courseCard = this.closest('.course-card');
+                const courseTitle = courseCard.querySelector('h3').textContent;
+                
+                alert(`تم تسجيلك بنجاح في دورة "${courseTitle}"! سيتم التواصل معك عبر البريد الإلكتروني برابط الدورة.`);
+            });
+        });
+        
+        // Start path button
+        document.querySelector('.path-btn-container .cta-button').addEventListener('click', function() {
+            alert('ستقوم المنصة قريباً بتوجيهك إلى مسار تعليمي مخصص بناءً على أهدافك وخبرتك!');
+        });
+        
+        // Add animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.floating, .section-title, .course-card, .map-step');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.85) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.floating, .section-title, .course-card, .map-step').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        // Trigger animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
